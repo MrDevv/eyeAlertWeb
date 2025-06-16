@@ -1,0 +1,7 @@
+
+.eye-alert-layout{
+    display: flex;
+    padding: 10px;
+    gap: 30px;
+    background-color: var(--background-color-secondary);
+}

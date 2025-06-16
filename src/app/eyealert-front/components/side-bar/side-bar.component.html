@@ -1,0 +1,59 @@
+<div class="sidebar">
+  <div
+    routerLink="home"
+    class="sidebar__logo">
+    <img src="assets/icon/logo.svg" alt="logo" />
+  </div>
+
+  <ul class="sidebar__options">
+    <li
+      routerLink="home"
+      routerLinkActive="sidebar__option--active"
+      class="sidebar__option"
+    >
+      <i class="fa-solid fa-house"></i>
+      <span>Inicio</span>
+    </li>
+
+    <li
+      routerLink="my-evaluations"
+      routerLinkActive="sidebar__option--active"
+      class="sidebar__option"
+    >
+      <i class="fa-solid fa-clock-rotate-left"></i>
+      <span>Mis evaluaciones</span>
+    </li>
+
+    <li
+      routerLink="informative-data"
+      routerLinkActive="sidebar__option--active"
+      class="sidebar__option"
+    >
+      <i class="fa-solid fa-lightbulb fa-rotate-180"></i>
+      <span>Datos informativos</span>
+    </li>
+
+    <li
+      routerLink="quiz"
+      routerLinkActive="sidebar__option--active"
+      class="sidebar__option"
+    >
+      <i class="fa-solid fa-gamepad"></i>
+      <span>¡Aprende jugando!</span>
+    </li>
+
+    <li
+      routerLink="statistics"
+      routerLinkActive="sidebar__option--active"
+      class="sidebar__option"
+    >
+      <i class="fa-solid fa-chart-simple"></i>
+      <span>Estadísticas</span>
+    </li>
+  </ul>
+
+  <div class="sidebar__logout">
+    <i class="fa-solid fa-door-open"></i>
+    <span>{{ 'Salir' | uppercase }} </span>
+  </div>
+</div>

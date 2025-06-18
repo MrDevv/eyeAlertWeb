@@ -1,0 +1,83 @@
+.home__user_ranking{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;    
+}
+
+.home__user_ranking-title{
+    font-size: 23px;
+}
+
+.home__user_ranking-list{    
+    width: 100%;
+    padding: 0 20px;
+}
+
+.home__user_ranking-list ul{
+    display: flex;    
+    flex-direction: column;    
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.home__user_ranking-list ul li{
+    display: flex;
+    align-items: center;
+    position: relative;    
+    gap: 10px;    
+}
+
+.home__user_ranking-list ul li span:last-child,
+.home__user_ranking-my-position span:last-child{
+    position: absolute;
+    right: 0;        
+}
+
+.home__user_ranking-my-position span:last-child{    
+    right: 10px; 
+}
+
+.home__user_ranking-list ul li span:first-child,
+.home__user_ranking-my-position span:first-child{
+    display: flex;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    font-weight: 700;
+}
+
+.home__user_ranking-list ul li:first-child span:first-child,
+.home__user_ranking-list ul li:nth-child(2) span:first-child,
+.home__user_ranking-list ul li:nth-child(3) span:first-child{    
+    color: #fff;
+}
+
+.home__user_ranking-list ul li:first-child span:first-child{
+    background-color: #D8A601;    
+}
+
+.home__user_ranking-list ul li:first-child span:last-child{
+    font-weight: bold;
+}
+
+.home__user_ranking-list ul li:nth-child(2) span:first-child{
+    background-color: #7D7D7D;
+}
+
+.home__user_ranking-list ul li:nth-child(3) span:first-child{
+    background-color: #894615;
+}
+
+.home__user_ranking-my-position{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;    
+    gap: 10px; 
+    padding: 10px 20px;
+    background-color: #DADADA;    
+}

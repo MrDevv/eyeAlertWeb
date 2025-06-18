@@ -1,0 +1,41 @@
+
+.home{
+    width: 100%;
+    height: 100%;
+    display: grid;    
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: max-content max-content auto;
+    gap: 40px;    
+}
+
+.card-user-score,
+.card-user-ranking,
+.main-data{
+    box-shadow: 1px 3px 10px #a5a5a5;
+    background-color: #fff;
+}
+
+.card-user-score,
+.card-user-ranking{
+    border-radius: 20px;
+}
+
+.card-user-profile{
+    grid-row: 1/2;
+}
+
+.card-user-score{
+    grid-row: 2/3;
+}
+
+.card-user-ranking{
+    grid-row: 3/4;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.main-data{    
+    border-radius: 50px;    
+    grid-row: 1/4;    
+    grid-column: 2/3;    
+}

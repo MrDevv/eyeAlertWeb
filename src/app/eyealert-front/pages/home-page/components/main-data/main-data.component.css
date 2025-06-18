@@ -1,0 +1,135 @@
+
+.home__main_data{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 40px;}
+
+.home__main_data-presentation{
+    padding: 20px 30px;
+    background-color: #EDF0FF;
+    border-radius: 10px;
+}
+
+.home__main_data-presentation h1 span{
+    color: var(--background-color-main);
+}
+
+.home__main_data-presentation p{    
+    font-size: 22px;
+}
+
+
+/* estilos contenedor últimas evaluaciones */
+.home__main_data-lastest-evaluations h2{
+    color: var(--background-color-main);
+}
+
+.lastest-evaluations-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lastest-evaluations-header button{
+    background-color: #E3F0FF;
+    padding: 10px 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--background-color-main);
+    border-radius: 10px;
+}
+
+
+.home__main_data-informative-data h2{
+    color: var(--background-color-main);
+}
+
+
+.lastest-evaluations-body{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 30px;
+}
+
+/* estilos card evaluacion */
+.card-evaluation{
+    padding: 20px;
+    min-width: 270px;
+}
+
+.card-evaluation span{
+    color: #363636;
+}
+
+.card-evaluation p{
+    margin: 12px 0 8px;
+    font-weight: bold;
+    font-size: 27px;
+}
+
+.high-risk{
+    border-left: 10px solid #0C6D40;
+    background-color: #D7FFEC;
+}
+
+.high-risk p{
+    color: #0C6D40;
+}
+
+.low-risk p{
+    color: #CC3724;
+}
+
+.low-risk{
+    border-left: 10px solid #CC3724;
+    background-color: #FFE4E0;
+}
+
+
+ /* estilos contenedor datos informativos  */
+.informative-data-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.informative-data-header button{
+    background-color: #E3F0FF;
+    padding: 10px 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--background-color-main);
+    border-radius: 10px;
+}
+
+.informative-data-body{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.card-informative-data{
+    border-radius: 10px;
+    padding: 15px 10px;
+    text-align: center;
+    background-color: #B4D7FF;
+    max-width: 300px;
+    position: relative;
+}
+
+.card-informative-data i{
+    position: absolute;
+    left: 20px;
+    bottom: 15px;
+    color: #fff;
+    font-size: 25px;
+}

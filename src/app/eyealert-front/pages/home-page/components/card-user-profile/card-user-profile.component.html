@@ -3,9 +3,11 @@
     <img src="assets/icons/user-image.jpg" alt="user image" />
   </div>
   <div class="home__user_profile-data">
-    <h3>Miguel Vega</h3>
-    <span>Administrador</span>
-    <span>{{ "miguelvegap10@gmail.com" }}</span>
+      <h3>{{ user()?.nombres }}</h3>
+      <span> {{ user()?.rol }} </span>
+      <span>{{ user()?.email }}</span>           
   </div>
-  <button class="home__user_profile-button-edit">{{ "Editar datos" | uppercase }}</button>
+  <button class="home__user_profile-button-edit">
+    {{ "Editar datos" | uppercase }}
+  </button>
 </div>

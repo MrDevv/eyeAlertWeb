@@ -52,8 +52,8 @@
     </li>
   </ul>
 
-  <div class="sidebar__logout">
+  <div (click)="authService.logout()" class="sidebar__logout">
     <i class="fa-solid fa-door-open"></i>
-    <span>{{ 'Salir' | uppercase }} </span>
+    <span>{{ 'Salir' | uppercase }} </span>    
   </div>
 </div>

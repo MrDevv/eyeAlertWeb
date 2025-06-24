@@ -1,48 +1,56 @@
 <div class="login">
-    
-    <div class="login__logo">
-        <img src="assets/icons/logo-login.svg" alt="logo login">
-        <h1>EyeAlert</h1>
-        <div class="lines">
-            <div></div>
-            <div></div>
-        </div>
+  <div class="login__logo">
+    <img src="assets/icons/logo-login.svg" alt="logo login" />
+    <h1>EyeAlert</h1>
+    <div class="lines">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <div class="login__data">
+    <div class="login__data-header">
+      <h2>{{ "Iniciar Sesión" | uppercase }}</h2>
+      <p>Por favor inicia sesión para continuar.</p>
     </div>
 
-    <div class="login__data">
-        <div class="login__data-header">
-            <h2>{{'Iniciar Sesión' | uppercase }} </h2>
-            <p>Por favor inicia sesión para continuar.</p>
-        </div>
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+      class="login__data-form"
+    >
+      <div class="email">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="email" placeholder="Correo electrónico" formControlName="email" />
+      </div>
 
-        <form class="login__data-form">
-            <div class="email">
-                <i class="fa-solid fa-envelope"></i>
-                <input type="email" placeholder="Correo electrónico">
-            </div>
+      <div class="password">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" placeholder="Contraseña" formControlName="password" />
+      </div>
 
-            <div class="password">
-                <i class="fa-solid fa-lock"></i>
-                <input type="password" placeholder="Contraseña">
-            </div>
+      <button class="btn-login" type="submit">
+        <i class="fa-solid fa-arrow-right"></i>
+        {{ "Iniciar sesión" | uppercase }}
+      </button>
 
-            <button class="btn-login">
-                <i class="fa-solid fa-arrow-right"></i>
-                {{'Iniciar sesión' | uppercase }}
-            </button>
+      <span>ó</span>
 
-            <span>ó</span>
+      <button routerLink="/auth/register" class="btn-create-account">
+        {{ "Crear nueva cuenta" | uppercase }}
+      </button>
+    </form>
 
-            <button routerLink="/auth/register" class="btn-create-account">{{'Crear nueva cuenta' | uppercase }} </button>
-        </form>
-
-        <div class="lines">
-            <div></div>
-            <div></div>
-        </div>
-
+    <div class="lines">
+      <div></div>
+      <div></div>
     </div>
-    
-    <p class="login__recover_password">¿Has olvidado tu contraseña?</p>
-    
+  </div>
+
+  <p class="login__recover_password">¿Has olvidado tu contraseña?</p>
 </div>
+
+
+@if (authService.authStatus()=='checking') {
+  <loader />  
+}

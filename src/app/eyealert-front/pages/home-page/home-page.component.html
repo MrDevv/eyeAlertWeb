@@ -1,5 +1,16 @@
 <div class="home">
-  <card-user-profile class="card-user-profile"/>
+  @if (user()) {
+    <card-user-profile [user]="user()" class="card-user-profile"/>    
+  }@else {
+    <div class="home__user_profile">
+      <div class="loader_skeleton__user_profile">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  }
 
   <card-user-score class="card-user-score"/>
 

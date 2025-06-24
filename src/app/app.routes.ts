@@ -1,13 +1,20 @@
 import { Routes } from '@angular/router';
-import { EyeAlertFrontLayoutComponent } from './eyealert-front/layouts/eye-alert-front-layout/eye-alert-front-layout.component';
+import { NotAutheticatedGuard } from './auth/guards/not-authenticated.guard';
+import { AuthenticatedGuard } from './auth/guards/authenticated.guard';
 
 export const routes: Routes = [
     {
         path: 'auth',
-        loadChildren: () => import('./auth/auth.routes')
+        loadChildren: () => import('./auth/auth.routes'),
+        canMatch: [
+            NotAutheticatedGuard
+        ]
     },
     {
         path: '',
-        loadChildren: () => import('./eyealert-front/eyealert-front.routes')
+        loadChildren: () => import('./eyealert-front/eyealert-front.routes'),
+            canMatch: [
+            AuthenticatedGuard
+        ],
     }
 ];

@@ -6,6 +6,7 @@ import { MyEvalutionsPageComponent } from './pages/my-evalutions-page/my-evaluti
 import { InformativeDataPageComponent } from './pages/informative-data-page/informative-data-page.component';
 import { QuizPageComponent } from './pages/quiz-page/quiz-page.component';
 import { StatisticsPageComponent } from './pages/statistics-page/statistics-page.component';
+import { AuthenticatedGuard } from '../auth/guards/authenticated.guard';
 
 export const routes: Routes = [
     {

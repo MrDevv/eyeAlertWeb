@@ -7,7 +7,8 @@ import { MainDataComponent } from "./components/main-data/main-data.component";
 import { AuthService } from '../../../auth/services/auth.service';
 import { EvaluationService } from '../../services/evaluation.service';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { of } from 'rxjs';
+import { catchError, of } from 'rxjs';
+import { InformativeDataService } from '../../services/informative-data.service';
 
 @Component({
   selector: 'app-home-page',
@@ -18,6 +19,7 @@ import { of } from 'rxjs';
 export class HomePageComponent {      
   authServices = inject(AuthService)
   evaluationService = inject(EvaluationService)
+  informativeData = inject(InformativeDataService)
 
   lastEvaluationsResource = rxResource({
     request: () => ({userId: this.authServices.user()?.id}),
@@ -26,6 +28,14 @@ export class HomePageComponent {
 
       return this.evaluationService.getLastestEvaluation(request.userId!)    
     }
+  })
+
+  informativeDataRandomResource = rxResource({
+    request: () => ({}),
+    loader: ({request}) =>{
+      const resp = this.informativeData.getInformativeDataRandom()            
+      return resp
+    }    
   })
 
 }

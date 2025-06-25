@@ -1,8 +1,11 @@
 import { SlicePipe, UpperCasePipe } from '@angular/common';
-import { Component, input, ResourceRef } from '@angular/core';
+import { Component, effect, inject, input, ResourceRef } from '@angular/core';
 import { ResponseHttpDTO } from '../../../../../interfaces/ResponseHttpDTO';
 import { CardEvaluationComponent } from "../../../../components/card-evaluation/card-evaluation.component";
 import { EvaluationsByUserDTO } from '../../../../interfaces/EvaluationsByUserDTO';
+import { InformativeDataDTO } from '../../../../interfaces/InformativeDataDTO';
+import { AlertsService } from '../../../../../services/alerts.service';
+import { ResponseErrorHttpDTO } from '../../../../../interfaces/ResponseErrorHttpDTO';
 
 @Component({
   selector: 'main-data',
@@ -12,4 +15,25 @@ import { EvaluationsByUserDTO } from '../../../../interfaces/EvaluationsByUserDT
 })
 export class MainDataComponent {
   lastestEvaluations = input.required<ResourceRef<ResponseHttpDTO<EvaluationsByUserDTO> | undefined>>()  
+  informativeDataRandom = input.required<ResourceRef<ResponseHttpDTO<InformativeDataDTO[]> | undefined>>()
+
+  alertsService = inject(AlertsService)
+
+  constructor(){    
+    effect(() => {
+      const error: any = this.informativeDataRandom().error()
+      if (error?.status == 500) {      
+        console.log(error);
+        this.showAlertErrorInternalServer()
+      }
+    })
+  }
+
+  showAlertErrorInternalServer(){
+    this.alertsService.error(
+      "Error en Servidor", 
+      "Ocurrió un error al momento de intentar traer los datos informativos, intentelo más tarde"
+    )    
+  }
+  
 }

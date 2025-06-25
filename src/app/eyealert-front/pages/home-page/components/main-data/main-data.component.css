@@ -129,6 +129,14 @@
     animation: pulse 1.5s infinite ease-in-out;
 }
 
+/* skeleton card informative data */
+.loader_skeleton__card_informative_data{
+    width: 30rem;
+    height: 11.9rem;
+    background-color: var(--background-color-skeleton);
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
 @keyframes pulse{
     0% {
         opacity: 1;

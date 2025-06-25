@@ -21,6 +21,31 @@ button{
   border: none;
 }
 
+body{
+  font-size: 1.6rem;
+}
+
+.swal2-icon{
+  width: 8rem;
+  height: 8rem;
+  margin: 4rem, auto 0.96rem
+}
+
+
+.swal2-title{  
+  padding: 2.4rem, 3rem, 0
+}
+
+.swal2-html-container{
+  /* font-size: 1.8rem; */
+  padding: 1.8rem, 2.88rem, .54rem
+}
+
+.swal2-modal{
+  font-size: 1.6rem;
+  width: 51.2rem;
+  padding: 0 0 2.5rem;
+}
 
 .container-loader{
   width: 100%;
@@ -61,4 +86,16 @@ button{
     transform: rotate(360deg);
   }
 }
-    
+
+.animate{
+  animation: fadeInUp 100ms ease-in-out;
+}
+
+@keyframes fadeInUp {
+    0%{
+        opacity: 0;
+    }    
+    100%{
+        opacity: 1;
+    }
+}

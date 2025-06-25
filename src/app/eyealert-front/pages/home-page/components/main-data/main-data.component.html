@@ -31,13 +31,11 @@
           <div class="loader_skeleton__card_evaluation">            
           </div>
       }
-    </div>
-    <!-- <div class="lastest-evaluations-button"> -->
-      <button class="lastest-evaluations-button">
-        <i class="fa-solid fa-plus-minus"></i>
-        {{'nueva evaluación' | uppercase }}
-      </button>
-    <!-- </div> -->
+    </div>    
+    <button class="lastest-evaluations-button">
+      <i class="fa-solid fa-plus-minus"></i>
+      {{'nueva evaluación' | uppercase }}
+    </button>    
   </div>
 
   <div class="home__main_data-informative-data">
@@ -50,95 +48,32 @@
     </div>
 
     <div class="informative-data-body">
-      <div class="card-informative-data">
-        <p>
-          {{
-            "Las personas mayores de 60 años corren mayor riesgo de tener glaucoma debido a que este un factor"
-              | slice : 0 : 69
-          }}...
-        </p>
-        <i class="fa-solid fa-lightbulb fa-rotate-180"></i>
-      </div>
-
-      <div class="card-informative-data">
-        <p>
-          {{
-            "Las personas mayores de 60 años corren mayor riesgo de tener glaucoma debido a que este un factor"
-              | slice : 0 : 69
-          }}...
-        </p>
-        <i class="fa-solid fa-lightbulb fa-rotate-180"></i>
-      </div>
-
-      <div class="card-informative-data">
-        <p>
-          {{
-            "Las personas mayores de 60 años corren mayor riesgo de tener glaucoma debido a que este un factor"
-              | slice : 0 : 69
-          }}...
-        </p>
-        <i class="fa-solid fa-lightbulb fa-rotate-180"></i>
-      </div>
-
-      <div class="card-informative-data">
-        <p>
-          {{
-            "Las personas mayores de 60 años corren mayor riesgo de tener glaucoma debido a que este un factor"
-              | slice : 0 : 69
-          }}...
-        </p>
-        <i class="fa-solid fa-lightbulb fa-rotate-180"></i>
-      </div>
-
-      <div class="card-informative-data">
-        <p>
-          {{
-            "Las personas mayores de 60 años corren mayor riesgo de tener glaucoma debido a que este un factor"
-              | slice : 0 : 69
-          }}...
-        </p>
-        <i class="fa-solid fa-lightbulb fa-rotate-180"></i>
-      </div>
-
-      <div class="card-informative-data">
-        <p>
-          {{
-            "Las personas mayores de 60 años corren mayor riesgo de tener glaucoma debido a que este un factor"
-              | slice : 0 : 69
-          }}...
-        </p>
-        <i class="fa-solid fa-lightbulb fa-rotate-180"></i>
-      </div>
-
-      <div class="card-informative-data">
-        <p>
-          {{
-            "Las personas mayores de 60 años corren mayor riesgo de tener glaucoma debido a que este un factor"
-              | slice : 0 : 69
-          }}...
-        </p>
-        <i class="fa-solid fa-lightbulb fa-rotate-180"></i>
-      </div>
-
-      <div class="card-informative-data">
-        <p>
-          {{
-            "Las personas mayores de 60 años corren mayor riesgo de tener glaucoma debido a que este un factor"
-              | slice : 0 : 69
-          }}...
-        </p>
-        <i class="fa-solid fa-lightbulb fa-rotate-180"></i>
-      </div>
-
-      <div class="card-informative-data">
-        <p>
-          {{
-            "Las personas mayores de 60 años corren mayor riesgo de tener glaucoma debido a que este un factor"
-              | slice : 0 : 69
-          }}...
-        </p>
-        <i class="fa-solid fa-lightbulb fa-rotate-180"></i>
-      </div>
+      @if(informativeDataRandom().hasValue()){
+        @for (informativeData of informativeDataRandom().value()?.data; track $index) {
+          <div class="card-informative-data animate">
+            <p>
+              {{
+                informativeData.descripcion
+                  | slice : 0 : 69
+              }}...
+            </p>
+            <i class="fa-solid fa-lightbulb fa-rotate-180"></i>
+          </div>
+        }    
+      }@else {
+        <div class="loader_skeleton__card_informative_data"></div>
+        <div class="loader_skeleton__card_informative_data"></div>
+        <div class="loader_skeleton__card_informative_data"></div>
+        <div class="loader_skeleton__card_informative_data"></div>
+        <div class="loader_skeleton__card_informative_data"></div>
+        <div class="loader_skeleton__card_informative_data"></div>
+        <div class="loader_skeleton__card_informative_data"></div>
+        <div class="loader_skeleton__card_informative_data"></div>
+        <div class="loader_skeleton__card_informative_data"></div>
+        <div class="loader_skeleton__card_informative_data"></div>
+        <div class="loader_skeleton__card_informative_data"></div>
+        <div class="loader_skeleton__card_informative_data"></div>
+      }
     </div>
   </div>
 </div>

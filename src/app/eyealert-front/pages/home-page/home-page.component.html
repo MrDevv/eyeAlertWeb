@@ -1,6 +1,5 @@
 <div class="home">
-  @if (authServices.user()) {
-    <!-- <card-user-profile [user]="user()" class="card-user-profile"/>     -->
+  @if (authServices.user()) {    
     <card-user-profile [user]="authServices.user()" class="card-user-profile"/>
   }@else {
     <div class="home__user_profile">
@@ -17,7 +16,11 @@
 
   <card-user-ranking class="card-user-ranking"/>
 
-  <main-data [lastestEvaluations]="lastEvaluationsResource" class="main-data"/>
+  <main-data 
+    [lastestEvaluations]="lastEvaluationsResource" 
+    [informativeDataRandom]="informativeDataRandomResource"
+    class="main-data"
+  />
 
 
 </div>

@@ -4,23 +4,21 @@
   --background-color-skeleton: #A5A5A5;
 }
 
-body, html{
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 62.5%;
+html{
+  font-size: 62.5%;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+*{
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+        
 }
 
 button{
   border: none;
-}
-
-h1, h2, h3, h4{
-  margin: 0;
-}
-
-*{
-    box-sizing: border-box;
 }
 
 

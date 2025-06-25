@@ -62,6 +62,7 @@ export class AuthService {
     }
         
     this.http.get<ResponseLoginDTO>(`${BASEURL}/auth/validate-token`).pipe(            
+      delay(3000),
       tap((resp) => {    
         const { data } = resp;
         this.successLogin(data!)

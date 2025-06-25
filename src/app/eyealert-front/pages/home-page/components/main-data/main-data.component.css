@@ -2,13 +2,17 @@
 .home__main_data{
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 2rem;
     padding: 40px;}
 
 .home__main_data-presentation{
-    padding: 20px 30px;
+    padding: 2rem 3rem 4rem;
     background-color: #EDF0FF;
     border-radius: 10px;
+}
+
+.home__main_data-presentation h1{
+    font-size: 2.7rem;
 }
 
 .home__main_data-presentation h1 span{
@@ -16,13 +20,16 @@
 }
 
 .home__main_data-presentation p{    
-    font-size: 22px;
+    margin-top: 2rem;
+    font-size: 2.2rem;
 }
 
 
 /* estilos contenedor últimas evaluaciones */
-.home__main_data-lastest-evaluations h2{
-    color: var(--background-color-main);
+.home__main_data-lastest-evaluations h2,
+.home__main_data-informative-data h2{
+    font-size: 2.4rem;
+    color: var(--background-color-main);    
 }
 
 .lastest-evaluations-header{
@@ -37,23 +44,33 @@
     display: flex;
     gap: 10px;
     align-items: center;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: 800;
     color: var(--background-color-main);
     border-radius: 10px;
 }
 
 
-.home__main_data-informative-data h2{
-    color: var(--background-color-main);
-}
-
-
 .lastest-evaluations-body{
-    margin-top: 10px;
+    padding: 1rem 0 1.5rem ;
     display: grid;
     grid-template-columns: repeat(4, 1fr);    
     gap: 30px;
+}
+
+
+.lastest-evaluations-button{
+    display: block;
+    margin: 0 auto;    
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background-color: var(--background-color-main);
+    padding: 1.2rem 10rem;
+    border-radius: 10px;
+    font-size: 1.5rem;    
+    font-weight: 700;  
+    color: #fff;
 }
 
 
@@ -64,13 +81,13 @@
     align-items: center;
 }
 
-.informative-data-header button{
+.informative-data-header button{    
     background-color: #E3F0FF;
     padding: 10px 15px;
     display: flex;
     gap: 10px;
     align-items: center;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: 800;
     color: var(--background-color-main);
     border-radius: 10px;
@@ -85,11 +102,12 @@
 
 .card-informative-data{
     border-radius: 10px;
-    padding: 15px 10px;
+    padding: 2.5rem 1rem;
     text-align: center;
     background-color: #B4D7FF;
     max-width: 300px;
     position: relative;
+    font-size: 1.7rem;
 }
 
 .card-informative-data i{

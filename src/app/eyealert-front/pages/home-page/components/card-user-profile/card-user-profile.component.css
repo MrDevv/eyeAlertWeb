@@ -26,30 +26,32 @@
 }
 
 .home__user_profile-data{
-    margin-top: 60px;
+    margin-top: 5rem;
     text-align: center;
 }
 
 .home__user_profile-data h3{    
-    font-size: 23px;
+    font-size: 2.3rem;
 }
 
 .home__user_profile-data span:nth-child(2){
     display: block;
     color: #585858;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
 .home__user_profile-data span:nth-child(3){
     display: block;
-    margin-top: 15px;
+    font-size: 1.6rem;
+    margin-top: 1.5rem;
     font-weight: bold;
 }
 
 .home__user_profile-button-edit{
     width: 100%;
     padding: 12px;
-    border-radius: 10px;        
+    border-radius: 10px;
     text-align: center;
     font-weight: 700;    
     color: #fff;    

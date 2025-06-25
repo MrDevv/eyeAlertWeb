@@ -1,16 +1,17 @@
 .card-evaluation{
-    padding: 20px;
-    min-width: 270px;
+    padding: 2rem;
+    min-width: 27rem;
 }
 
 .card-evaluation span{
+    font-size: 1.6rem;
     color: #363636;
 }
 
 .card-evaluation p{
     margin: 12px 0 8px;
     font-weight: bold;
-    font-size: 27px;
+    font-size: 2.7rem;
 }
 
 .high-risk{

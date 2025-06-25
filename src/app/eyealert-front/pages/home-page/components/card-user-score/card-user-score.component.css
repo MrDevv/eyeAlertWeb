@@ -11,35 +11,37 @@
 }
 
 .home__user_score h4{
-    font-size: 23px;
+    font-size: 2.3rem;
 }
 
 .home__user_score span:nth-child(2){
-    font-size: 23px;
+    font-size: 2.2rem;
     font-weight: 600;
     color: #545903;
 }
 
 .home__user_score-divider{
-    height: 2px;
-    width: 40px;
+    height: 0.2rem;
+    width: 4rem;
     background-color: var(--background-color-main);
 }
 
 .home__user_score span:nth-child(4){
     color: #4B4B4B;
     font-weight: 600;
+    font-size: 1.6rem;
 }
 
 .home__user_score span:nth-child(5){
     color: var(--background-color-main);
     font-weight: 600;
+    font-size: 1.6rem;
 }
 
 .home__user_score button{
     width: 100%;
     padding: 12px;
-    margin-top: 5px;
+    margin-top: .5rem;
     border-radius: 10px;        
     text-align: center;
     font-weight: 700;    

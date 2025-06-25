@@ -1,4 +1,4 @@
-import { SlicePipe } from '@angular/common';
+import { SlicePipe, UpperCasePipe } from '@angular/common';
 import { Component, input, ResourceRef } from '@angular/core';
 import { ResponseHttpDTO } from '../../../../../interfaces/ResponseHttpDTO';
 import { CardEvaluationComponent } from "../../../../components/card-evaluation/card-evaluation.component";
@@ -6,7 +6,7 @@ import { EvaluationsByUserDTO } from '../../../../interfaces/EvaluationsByUserDT
 
 @Component({
   selector: 'main-data',
-  imports: [SlicePipe, CardEvaluationComponent],
+  imports: [SlicePipe, CardEvaluationComponent, UpperCasePipe],
   templateUrl: './main-data.component.html',  
   styleUrl: './main-data.component.css'
 })

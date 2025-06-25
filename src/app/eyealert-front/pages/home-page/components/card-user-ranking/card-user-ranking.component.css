@@ -6,27 +6,29 @@
 }
 
 .home__user_ranking-title{
-    font-size: 23px;
+    font-size: 2.3rem;
 }
 
-.home__user_ranking-list{    
+.home__user_ranking-list{
     width: 100%;
     padding: 0 20px;
 }
 
 .home__user_ranking-list ul{
+    margin-top: 1.5rem;
     display: flex;    
     flex-direction: column;    
-    gap: 10px;
+    gap: 1.3rem;
     list-style: none;
     padding: 0;
 }
 
 .home__user_ranking-list ul li{
+    font-size: 1.7rem;
     display: flex;
     align-items: center;
     position: relative;    
-    gap: 10px;    
+    gap: 1rem;    
 }
 
 .home__user_ranking-list ul li span:last-child,
@@ -40,7 +42,7 @@
 }
 
 .home__user_ranking-list ul li span:first-child,
-.home__user_ranking-my-position span:first-child{
+.home__user_ranking-my-position span:first-child{    
     display: flex;
     border-radius: 50px;
     justify-content: center;
@@ -73,6 +75,7 @@
 }
 
 .home__user_ranking-my-position{
+    font-size: 1.7rem;
     width: 100%;
     display: flex;
     align-items: center;

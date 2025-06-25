@@ -51,43 +51,9 @@
 
 .lastest-evaluations-body{
     margin-top: 10px;
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);    
     gap: 30px;
-}
-
-/* estilos card evaluacion */
-.card-evaluation{
-    padding: 20px;
-    min-width: 270px;
-}
-
-.card-evaluation span{
-    color: #363636;
-}
-
-.card-evaluation p{
-    margin: 12px 0 8px;
-    font-weight: bold;
-    font-size: 27px;
-}
-
-.high-risk{
-    border-left: 10px solid #0C6D40;
-    background-color: #D7FFEC;
-}
-
-.high-risk p{
-    color: #0C6D40;
-}
-
-.low-risk p{
-    color: #CC3724;
-}
-
-.low-risk{
-    border-left: 10px solid #CC3724;
-    background-color: #FFE4E0;
 }
 
 
@@ -132,4 +98,27 @@
     bottom: 15px;
     color: #fff;
     font-size: 25px;
+}
+
+
+
+
+/* skeleton card evaluation */
+.loader_skeleton__card_evaluation{
+    width: 290px;
+    height: 119px;
+    background-color: var(--background-color-skeleton);
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse{
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
 }

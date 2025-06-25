@@ -1,0 +1,8 @@
+<div 
+    class="card-evaluation"
+    [class.high-risk]="evaluation().resultado == 'alto'"
+    [class.low-risk]="evaluation().resultado == 'bajo'"          
+>
+<span>{{ formatDate() | date:'dd MMM yyyy' | titlecase }}</span>
+<p> {{ 'riesgo ' + evaluation().resultado | uppercase }} </p>
+</div>   

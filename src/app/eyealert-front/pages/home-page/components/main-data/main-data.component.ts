@@ -1,12 +1,15 @@
 import { SlicePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, input, ResourceRef } from '@angular/core';
+import { ResponseHttpDTO } from '../../../../../interfaces/ResponseHttpDTO';
+import { CardEvaluationComponent } from "../../../../components/card-evaluation/card-evaluation.component";
+import { EvaluationsByUserDTO } from '../../../../interfaces/EvaluationsByUserDTO';
 
 @Component({
   selector: 'main-data',
-  imports: [SlicePipe],
+  imports: [SlicePipe, CardEvaluationComponent],
   templateUrl: './main-data.component.html',  
   styleUrl: './main-data.component.css'
 })
 export class MainDataComponent {
-
+  lastestEvaluations = input.required<ResourceRef<ResponseHttpDTO<EvaluationsByUserDTO> | undefined>>()  
 }

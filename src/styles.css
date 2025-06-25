@@ -1,12 +1,14 @@
 :root{
   --background-color-main: #0C4D96;
   --background-color-secondary: #D5DCFF;
+  --background-color-skeleton: #A5A5A5;
 }
 
 body, html{
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 62.5%;
 }
 
 button{

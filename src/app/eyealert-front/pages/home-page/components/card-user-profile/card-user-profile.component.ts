@@ -11,9 +11,5 @@ import { rxResource } from '@angular/core/rxjs-interop';
   styleUrl: './card-user-profile.component.css'
 })
 export class CardUserProfileComponent {
-  user = input.required<UserDTO | null>()
-
-  ngOnInit(){
-    console.log(`usuario: ${this.user()}`);
-  }
+  user = input.required<UserDTO | null>()  
 }

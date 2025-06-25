@@ -16,26 +16,22 @@
       </button>
     </div>
 
-    <div class="lastest-evaluations-body">
-      <div class="card-evaluation high-risk">
-        <span>25 May 2025</span>
-        <p>Riesgo Bajo</p>
-      </div>
+    <div class="lastest-evaluations-body">      
+      @if (lastestEvaluations().hasValue()) {
+        @for (evaluation of lastestEvaluations().value()?.data?.evaluaciones; track $index) {          
+          <card-evaluation [evaluation]="evaluation"/>          
+        }
+      }@else {
+          <div class="loader_skeleton__card_evaluation">            
+          </div>
+          <div class="loader_skeleton__card_evaluation">            
+          </div>
+          <div class="loader_skeleton__card_evaluation">            
+          </div>
+          <div class="loader_skeleton__card_evaluation">            
+          </div>
+      }
 
-      <div class="card-evaluation low-risk">
-        <span>25 May 2025</span>
-        <p>Riesgo Alto</p>
-      </div>
-
-      <div class="card-evaluation high-risk">
-        <span>25 May 2025</span>
-        <p>Riesgo Bajo</p>
-      </div>
-
-      <div class="card-evaluation low-risk">
-        <span>25 May 2025</span>
-        <p>Riesgo Alto</p>
-      </div>
     </div>
   </div>
 

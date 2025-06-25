@@ -5,9 +5,9 @@
     align-items: center;
     display: flex;
     gap: 20px;
-    padding: 20px 30px;
+    padding: 2rem 3rem;
     flex-direction: column;
-    margin-top: 70px;
+    margin-top: 7rem;
     position: relative;
 }
 

@@ -1,9 +1,14 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, LOCALE_ID, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './auth/interceptors/auth.interceptor';
+
+import {registerLocaleData} from '@angular/common'
+import localEs from '@angular/common/locales/es'
+
+registerLocaleData(localEs, 'es')
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,6 +16,10 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(
       withFetch(), 
-      withInterceptors([authInterceptor])),    
+      withInterceptors([authInterceptor])),
+    {
+      provide: LOCALE_ID,
+      useValue: 'es'
+    }      
   ]
 };

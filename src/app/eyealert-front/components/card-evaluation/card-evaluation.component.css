@@ -1,0 +1,32 @@
+.card-evaluation{
+    padding: 20px;
+    min-width: 270px;
+}
+
+.card-evaluation span{
+    color: #363636;
+}
+
+.card-evaluation p{
+    margin: 12px 0 8px;
+    font-weight: bold;
+    font-size: 27px;
+}
+
+.high-risk{
+    border-left: 10px solid #0C6D40;
+    background-color: #D7FFEC;
+}
+
+.high-risk p{
+    color: #0C6D40;
+}
+
+.low-risk p{
+    color: #CC3724;
+}
+
+.low-risk{
+    border-left: 10px solid #CC3724;
+    background-color: #FFE4E0;
+}

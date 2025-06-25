@@ -8,12 +8,8 @@ export const NotAutheticatedGuard: CanMatchFn = async(
 ) => {
     const authService = inject(AuthService)
     const router = inject(Router)
-
     const isAuthenticated = authService.authStatus()
-
-    console.log(`no esta autenticado ${isAuthenticated}`);
-
-
+    
     if (isAuthenticated == 'authenticated' || isAuthenticated == 'checking') {
         router.navigateByUrl('/home')
         return false

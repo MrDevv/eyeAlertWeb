@@ -61,8 +61,8 @@ export class AuthService {
       return
     }
         
-    this.http.get<ResponseLoginDTO>(`${BASEURL}/auth/validate-token`).pipe(
-      tap((resp) => {
+    this.http.get<ResponseLoginDTO>(`${BASEURL}/auth/validate-token`).pipe(            
+      tap((resp) => {    
         const { data } = resp;
         this.successLogin(data!)
       }),
@@ -72,7 +72,7 @@ export class AuthService {
     ).subscribe()    
   }
 
-  successLogin(data: UserDTO){
+  successLogin(data: UserDTO){    
       this._user.set(data)
       this._token.set(data!.jwt)
       this._authStatus.set('authenticated')                

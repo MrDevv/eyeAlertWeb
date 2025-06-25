@@ -12,7 +12,7 @@ export function authInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) 
     const authAlerts = inject(AlertsService)
     
 
-    const token = authService.token()
+    const token = localStorage.getItem('tokenEyeAlert')    
   
     const newReq = req.clone({
         headers: req.headers.append('Authorization', `Bearer ${token}`),
@@ -24,8 +24,7 @@ export function authInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) 
                 router.navigateByUrl('/auth/login')
                 showAlertSessionExpired(authAlerts)
             }
-            if (err.status == 0) {
-                console.log('el servidor no se encuentra disponible');                
+            if (err.status == 0) {                
                 showAlertServerUnavailable(authAlerts)
             }
             return throwError(()=> err)

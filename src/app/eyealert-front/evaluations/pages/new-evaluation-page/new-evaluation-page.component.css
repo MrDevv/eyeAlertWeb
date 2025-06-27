@@ -1,0 +1,120 @@
+.parent{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new_evaluation{
+    padding: 3rem;
+    width: 50rem;    
+    background-color: #fff;
+    border-radius: 5rem;
+}
+
+.new_evaluation__header{    
+    text-align: center;
+}
+
+.new_evaluation__header h2{
+    color: var(--background-color-main);
+    text-transform: uppercase;
+}
+
+.new_evaluation__body{
+    padding: 2rem 0 0;
+}
+
+.body__question{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    list-style: none;
+    margin-bottom: 3rem;
+}
+
+.body__question input[type="number"]{
+    padding: 1rem;
+    background-color: rgb(245, 245, 245);
+    font-size: 2rem;
+    width: 8rem;
+    height: 4rem;
+    border: none;
+}
+
+
+.body__question input[type="number"]:focus-visible{    
+    outline: none;
+}
+
+.body__question p{
+    margin-bottom: 1rem;
+}
+
+.body__question--bold{
+    font-weight: 700;
+}
+
+.question__options{
+    display: flex;
+    gap: 10rem;
+    justify-content: center;    
+}
+
+.body__option--gender{
+    width: 7rem;
+    height: 7rem;    
+    position: relative;
+}
+
+.body__option--gender input{
+    width: 100%;
+    height: 100%;
+    appearance: none;
+    border-radius: 50px;    
+    cursor: pointer;
+}
+
+.body__option--gender input[type="radio"]:checked{
+    border: 3px solid var(--background-color-main);    
+}
+
+.body__option--gender img{
+    position: absolute;
+    left: 50%;    
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+
+.body__option{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.body__option input[type="radio"]{
+    width: 3rem;
+    height: 3rem;
+    appearance: none;
+    border-radius: 50px;    
+    border: 1px solid var(--background-color-main);
+}
+
+.body__option input[type="radio"]:checked{    
+    background-color: var(--background-color-main);
+}
+
+.body__button_evaluation{
+    display: block;
+    background-color: var(--background-color-main);
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 700;  
+    padding: 1rem 3rem;
+    color: #fff;
+    margin: auto;
+}

@@ -1,11 +1,12 @@
 
 .eye-alert-layout{
     display: flex;
-    padding: 20px;
+    padding: 20px;    
     gap: 70px;
     background-color: var(--background-color-secondary);
 }
 
-.eye-alert-layout section{
+.eye-alert-layout section{    
     width: 100%;    
+    height: 100vh - 4rem;    
 }

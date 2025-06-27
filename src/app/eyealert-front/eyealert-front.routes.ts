@@ -1,12 +1,11 @@
 
 import { Routes } from '@angular/router';
-import { EyeAlertFrontLayoutComponent } from './layouts/eye-alert-front-layout/eye-alert-front-layout.component';
-import { HomePageComponent } from './pages/home-page/home-page.component';
-import { MyEvalutionsPageComponent } from './pages/my-evalutions-page/my-evalutions-page.component';
-import { InformativeDataPageComponent } from './pages/informative-data-page/informative-data-page.component';
-import { QuizPageComponent } from './pages/quiz-page/quiz-page.component';
-import { StatisticsPageComponent } from './pages/statistics-page/statistics-page.component';
-import { AuthenticatedGuard } from '../auth/guards/authenticated.guard';
+import { InformativeDataPageComponent } from './informative-data/pages/informative-data-page/informative-data-page.component';
+import { QuizPageComponent } from './quizz/pages/quiz-page/quiz-page.component';
+import { StatisticsPageComponent } from './statistics/pages/statistics-page/statistics-page.component';
+import { HomePageComponent } from './home/pages/home-page/home-page.component';
+import { EyeAlertFrontLayoutComponent } from './shared/layouts/eye-alert-front-layout/eye-alert-front-layout.component';
+import { ListEvalutionsPageComponent } from './evaluations/pages/list-evalutions-page/list-evalutions-page.component';
 
 export const routes: Routes = [
     {
@@ -18,8 +17,8 @@ export const routes: Routes = [
                 component: HomePageComponent
             },
             {
-                path: 'my-evaluations',
-                component: MyEvalutionsPageComponent
+                path: 'evaluations',
+                component: ListEvalutionsPageComponent
             },
             {
                 path: 'informative-data',

@@ -3,8 +3,8 @@ import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { AlertsService } from '../../../services/alerts.service';
-import { LoaderComponent } from '../../../components/loader/loader.component';
+import { AlertsService } from '../../../shared/services/alerts.service';
+import { LoaderComponent } from '../../../shared/components/loader/loader.component';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

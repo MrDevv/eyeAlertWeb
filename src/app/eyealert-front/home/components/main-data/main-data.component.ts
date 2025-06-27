@@ -5,10 +5,11 @@ import { ResponseHttpDTO } from '../../../../shared/interfaces/ResponseHttpDTO';
 import { InformativeDataDTO } from '../../../informative-data/interfaces/InformativeDataDTO';
 import { EvaluationsByUserDTO } from '../../../evaluations/interfaces/EvaluationsByUserDTO';
 import { CardEvaluationComponent } from '../../../shared/components/card-evaluation/card-evaluation.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'main-data',
-  imports: [SlicePipe, CardEvaluationComponent, UpperCasePipe],
+  imports: [RouterLink, SlicePipe, CardEvaluationComponent, UpperCasePipe],
   templateUrl: './main-data.component.html',  
   styleUrl: './main-data.component.css'
 })

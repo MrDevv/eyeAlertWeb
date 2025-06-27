@@ -1,6 +1,7 @@
 .card-evaluation{
     padding: 2rem;
     min-width: 27rem;
+    cursor: pointer;
 }
 
 .card-evaluation span{

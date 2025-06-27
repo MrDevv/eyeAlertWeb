@@ -10,10 +10,10 @@
   <div class="home__main_data-lastest-evaluations">
     <div class="lastest-evaluations-header">
       <h2>Últimas 4 Evaluaciones</h2>
-      <button>
+      <a routerLink="/evaluations">
         <i class="fa-solid fa-eye"></i>
         Ver Todas
-      </button>
+      </a>
     </div>
 
     <div class="lastest-evaluations-body">      
@@ -32,19 +32,22 @@
           </div>
       }
     </div>    
-    <button class="lastest-evaluations-button">
+    <a 
+      routerLink="/evaluations/new-evaluation"
+      class="new-evaluations-button"
+    >
       <i class="fa-solid fa-plus-minus"></i>
       {{'nueva evaluación' | uppercase }}
-    </button>    
+    </a>    
   </div>
 
   <div class="home__main_data-informative-data">
     <div class="informative-data-header">
       <h2>Datos Informativos</h2>
-      <button>
+      <a>
         <i class="fa-solid fa-eye"></i>
         Ver Todas
-      </button>
+      </a>
     </div>
 
     <div class="informative-data-body">

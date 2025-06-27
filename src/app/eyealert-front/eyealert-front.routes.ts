@@ -18,7 +18,7 @@ export const routes: Routes = [
             },
             {
                 path: 'evaluations',
-                component: ListEvalutionsPageComponent
+                loadChildren: () => import('./evaluations/evaluations.routes')
             },
             {
                 path: 'informative-data',

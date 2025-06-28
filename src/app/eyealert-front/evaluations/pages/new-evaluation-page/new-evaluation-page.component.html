@@ -1,102 +1,63 @@
 <div class="parent">
-    <div class="new_evaluation">
-        <div class="new_evaluation__header">
-            <h2>Nueva evaluación</h2>
+    @if(questionsResource.hasValue()){
+        <div class="new_evaluation">
+            <div class="new_evaluation__header">
+                <h2>Nueva evaluación</h2>
+            </div>
+            <div class="new_evaluation__body">
+                <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+                    <ul class="body__question">                
+                        @for(question of questionsResource.value().data; track question.id; let index = $index){
+                            <li>
+                                <p>{{index + 1}}. {{question.pregunta}} : </p>
+                                @if (question.nombre == 'edad') {
+                                    <input                                                                                
+                                        type="number"                                        
+                                        (input)="onChangeFieldText(question.nombre, $event.target)"
+                                    > 
+                                }
+                                @else {
+                                    <div class="question__options">
+                                        @for (option of question.respuestas; track $index) {
+                                            <div       
+                                                [class.body__option--gender]="question.nombre == 'genero'"
+                                                [class.body__option]="!(question.nombre == 'genero')"
+                                            >
+                                                @if (question.nombre != 'genero') {
+                                                    <label>
+                                                        {{ option.respuesta }}
+                                                    </label>
+                                                }
+                                                <input 
+                                                    [name]="question.nombre"
+                                                    (change)="onChangeFieldButton(question.nombre, option.respuesta, option.respuesta_id)"
+                                                    [value]="option.respuesta_id"
+                                                    type="radio" 
+                                                >
+                                                @if (question.pregunta.includes('genero')) {
+                                                    <img 
+                                                        [src]="option.respuesta == 'Masculino' ? 'assets/icons/man-icon.svg': 'assets/icons/woman-icon.svg'" 
+                                                        [alt]="'icon ' + option.respuesta"
+                                                    >
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+    
+                                }
+                            </li>
+                        }
+                    </ul>        
+                    <button class="body__button_evaluation"> Realizar evaluación </button>
+                </form>
+            </div>
         </div>
-        <div class="new_evaluation__body">
-            <form>
-                <ul class="body__question">
-                    <li>
-                        <p>1. Ingrese su edad: <span class="body__question--bold">(mayor o igual de 40 años)</span></p>
-                        <input type="number">
-                    </li>
-        
-                    <li>
-                        <p>2. Selecciona tu genero</p>
-                        <div class="question__options">
-                            <div class="body__option--gender">
-                                <input type="radio" name="gender">
-                                <img src="assets/icons/man-icon.svg" alt="icon man">
-                            </div>
-                            <div class="body__option--gender">
-                                <input type="radio" name="gender">
-                                <img src="assets/icons/woman-icon.svg" alt="">
-                            </div>
-                        </div>
-                    </li>
-        
-                    <li>
-                        <p>3. ¿Te han diagnosticado con presión intraocular (PIO) elevada?</p>
-                        <div class="question__options">
-                            <div class="body__option">
-                                <label>Sí</label>
-                                <input type="radio" name="pio">
-                            </div>
-                            <div class="body__option">
-                                <label for="No">No</label>
-                                <input type="radio" name="pio"> 
-                            </div>
-                        </div>
-                    </li>
-        
-                    <li>
-                        <p>4. ¿Tu papá o mamá fueron diagnosticados con glaucoma?</p>
-                        <div class="question__options">
-                            <div class="body__option">
-                                <label>Sí</label>
-                                <input type="radio" name="history">
-                            </div>
-                            <div class="body__option">
-                                <label for="No">No</label>
-                                <input type="radio" name="history">
-                            </div>
-                        </div>
-                    </li>
-        
-                    <li>
-                        <p>5. ¿Has sido diagnosticado con diabetes millitus?</p>
-                        <div class="question__options">
-                            <div class="body__option">
-                                <label>Sí</label>
-                                <input type="radio" name="mellitus">         
-                            </div>
-                            <div class="body__option">
-                                <label for="No">No</label>
-                                <input type="radio" name="mellitus">     
-                            </div>
-                        </div>
-                    </li>
-        
-                    <li>
-                        <p>6. ¿Has sido diagnosticado con hipertensión arterial?</p>
-                        <div class="question__options">
-                            <div class="body__option">
-                                <label>Sí</label>
-                                <input type="radio" name="hipertension">
-                            </div>
-                            <div class="body__option">
-                                <label for="No">No</label>
-                                <input type="radio" name="hipertension">
-                            </div>
-                        </div>
-                    </li>
-        
-                    <li>
-                        <p>7. ¿Has sido diagnosticado con catarata?</p>
-                        <div class="question__options">
-                            <div class="body__option">
-                                <label>Sí</label>
-                                <input type="radio" name="catarata">
-                            </div>
-                            <div class="body__option">
-                                <label for="No">No</label>
-                                <input type="radio" name="catarata">
-                            </div>
-                        </div>
-                    </li>
-                </ul>        
-                <button class="body__button_evaluation"> Realizar evaluación </button>
-            </form>
-        </div>
-    </div>
+    }
+
+    <!-- {{ questionForm.value | json }}
+    {{ questionForm.valid }} -->
 </div>
+
+@if (!questionsResource.value() && !questionsResource.error() || isLoading()) {
+  <loader />  
+}

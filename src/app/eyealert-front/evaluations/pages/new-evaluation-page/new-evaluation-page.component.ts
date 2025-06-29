@@ -6,6 +6,8 @@ import { firstValueFrom } from 'rxjs';
 import { AlertsService } from '../../../../shared/services/alerts.service';
 import { LoaderComponent } from '../../../../shared/components/loader/loader.component';
 import { EvaluationPredictDTO } from '../../interfaces/EvaluationPredictDTO';
+import { ModalService } from '../../../../shared/services/modal.service';
+import { ModalRiskLevelComponent } from '../../components/modals/modal-risk-level/modal-risk-level.component';
 
 
 @Component({
@@ -20,6 +22,8 @@ export class NewEvaluationPageComponent {
   alertsService = inject(AlertsService)
   dataPrediction = signal<EvaluationPredictDTO | null>(null)
   isLoading = signal<boolean>(false)
+
+  modalService = inject(ModalService)
 
   questionForm = this.fb.group({})
 
@@ -76,8 +80,9 @@ export class NewEvaluationPageComponent {
 
     )
     try{
-      const reps = await firstValueFrom(this.evaluationService.prediction(this.dataPrediction()!))
+      const resp: any = await firstValueFrom(this.evaluationService.prediction(this.dataPrediction()!))
 
+      this.modalService.openModal(ModalRiskLevelComponent, resp)
 
     }catch(err){
       console.log(err);

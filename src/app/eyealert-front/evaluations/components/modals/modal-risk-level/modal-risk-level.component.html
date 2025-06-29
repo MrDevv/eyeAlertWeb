@@ -1,0 +1,34 @@
+<div class="modal_risk_level">
+    <div 
+        [class.low_risk_bg]="matDialog.data.result_evaluation == '0'"
+        [class.high_risk_bg]="matDialog.data.result_evaluation == '1'"
+        class="modal_risk_level__header"
+    >
+        Riesgo de Glaucoma
+    </div>
+
+    <div 
+        class="modal_risk_level__body"
+    >
+        <h2
+            [class.low_risk_color]="matDialog.data.result_evaluation == '0'"
+            [class.high_risk_color]="matDialog.data.result_evaluation == '1'"
+        > 
+            {{ matDialog.data.message | uppercase }} 
+        </h2>
+
+
+        <div>
+            <p class="body__message">
+                {{ getMessageRisk() }}
+            </p>
+
+            <button 
+                class="risk_level__button" 
+                (click)="modalService.closeModal()"
+            >
+                Cerrar
+            </button>
+        </div>
+    </div>    
+</div>

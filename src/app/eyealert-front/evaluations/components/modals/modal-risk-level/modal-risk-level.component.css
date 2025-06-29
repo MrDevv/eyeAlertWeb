@@ -1,0 +1,58 @@
+.modal_risk_level{
+    width: 45rem;
+}
+
+.modal_risk_level__header{
+    padding: 2rem;
+    text-align: center;
+    font-size: 2.2rem;
+    color: #FFF;    
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.low_risk_bg{
+    background-color: #0C6D40;    
+}
+
+.high_risk_bg{
+    background-color: #CC3724;    
+}
+
+.low_risk_color{
+    color: #0C6D40;    
+}
+
+.high_risk_color{
+    color: #CC3724;    
+}
+
+.modal_risk_level__body{
+    text-align: center;
+}
+
+.modal_risk_level__body h2{
+    margin: 3rem 0;
+    font-size: 3.3rem;
+}
+
+.modal_risk_level__body div{
+    padding: 0 2rem 2rem;
+    background-color: #EEEEEE;
+}
+
+.body__message{
+    display: inline-block;
+    margin: 3rem 0;
+    font-weight: 500;
+}
+
+.risk_level__button{
+    cursor: pointer;
+    font-size: 1.5rem;
+    background-color: #2B425C;
+    border-radius: 5px;
+    font-weight: 700;
+    padding: 1rem 8rem;
+    color: #fff;
+}

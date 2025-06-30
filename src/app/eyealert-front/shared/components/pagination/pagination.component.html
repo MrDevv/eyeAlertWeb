@@ -1,0 +1,31 @@
+<div class="pagination">
+    @if(!dataPagination()?.firstPage){
+        <div 
+            (click)="navigateToPage(currentPage() - 1)"
+            [routerLink]="[]"
+            [queryParams]="{ page: currentPage() - 1}"
+            class="rows">
+        <
+        </div>
+    }        
+
+    @for (page of pages; track $index; let index = $index) {
+        <div (click)="navigateToPage(page)"
+            [class.pagination_option--active]="(dataPagination()?.numberPage ==  index)"
+            [routerLink]="[]"
+            [queryParams]="{ page: page }"
+            class="pagination_option">
+            <span>{{ index + 1 }}</span>           
+        </div>
+    }
+
+    @if(!dataPagination()?.lastPage){
+        <div 
+            (click)="navigateToPage(currentPage() + 1)" 
+            [routerLink]="[]"
+            [queryParams]="{ page: currentPage() + 1}"
+            class="rows">
+        >
+        </div>
+    }           
+</div>

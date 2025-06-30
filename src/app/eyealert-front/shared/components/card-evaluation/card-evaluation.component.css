@@ -16,20 +16,20 @@
 }
 
 .high-risk{
-    border-left: 10px solid #0C6D40;
-    background-color: #D7FFEC;
+    border-left: 10px solid #CC3724;
+    background-color: #FFE4E0;
 }
 
 .high-risk p{
-    color: #0C6D40;
-}
-
-.low-risk p{
     color: #CC3724;
 }
 
+.low-risk p{
+    color: #0C6D40;    
+}
+
 .low-risk{
-    border-left: 10px solid #CC3724;
-    background-color: #FFE4E0;
+    border-left: 10px solid #0C6D40;    
+    background-color: #D7FFEC;    
 }
 

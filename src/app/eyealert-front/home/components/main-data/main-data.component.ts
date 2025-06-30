@@ -1,7 +1,7 @@
 import { SlicePipe, UpperCasePipe } from '@angular/common';
 import { Component, effect, inject, input, ResourceRef } from '@angular/core';
 import { AlertsService } from '../../../../shared/services/alerts.service';
-import { ResponseHttpDTO } from '../../../../shared/interfaces/ResponseHttpDTO';
+import { ResponseHttp } from '../../../../shared/interfaces/ResponseHttp';
 import { InformativeDataDTO } from '../../../informative-data/interfaces/InformativeDataDTO';
 import { EvaluationsByUserDTO } from '../../../evaluations/interfaces/EvaluationsByUserDTO';
 import { CardEvaluationComponent } from '../../../shared/components/card-evaluation/card-evaluation.component';
@@ -14,8 +14,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './main-data.component.css'
 })
 export class MainDataComponent {
-  lastestEvaluations = input.required<ResourceRef<ResponseHttpDTO<EvaluationsByUserDTO> | undefined>>()  
-  informativeDataRandom = input.required<ResourceRef<ResponseHttpDTO<InformativeDataDTO[]> | undefined>>()
+  lastestEvaluations = input.required<ResourceRef<ResponseHttp<EvaluationsByUserDTO> | undefined>>()  
+  informativeDataRandom = input.required<ResourceRef<ResponseHttp<InformativeDataDTO[]> | undefined>>()
 
   alertsService = inject(AlertsService)
 

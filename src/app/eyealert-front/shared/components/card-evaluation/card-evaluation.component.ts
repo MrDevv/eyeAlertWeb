@@ -5,7 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'card-evaluation',
-  imports: [UpperCasePipe, DatePipe, TitleCasePipe, RouterLink],
+  imports: [UpperCasePipe, DatePipe, TitleCasePipe],
   templateUrl: './card-evaluation.component.html',
   styleUrl: './card-evaluation.component.css'
 })

@@ -1,6 +1,6 @@
-import { UpperCasePipe } from '@angular/common';
+import { JsonPipe, UpperCasePipe } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { AlertsService } from '../../../shared/services/alerts.service';
@@ -9,7 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-page',
-  imports: [LoaderComponent, UpperCasePipe, RouterLink, ReactiveFormsModule],
+  imports: [LoaderComponent, UpperCasePipe, RouterLink, ReactiveFormsModule, JsonPipe],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css',
 })
@@ -20,10 +20,14 @@ export class LoginPageComponent {
   authService = inject(AuthService);
   alertsService = inject(AlertsService);
 
-  loginForm = this.fb.group({
+  loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
+
+  get email(){
+    return this.loginForm.get('email')
+  }
 
   onSubmit() {
     const { email, password } = this.loginForm.value;    
@@ -71,7 +75,7 @@ export class LoginPageComponent {
   showAlertInvalidFields() {
     this.alertsService.warning(
       'Campos no válidos',
-      'Por favor ingrese revise los datos que ingresó'
+      'Por favor ingrese datos válidos, revise los datos que ingresó'
     );
   }
 }

@@ -21,8 +21,12 @@
     >
       <div class="email">
         <i class="fa-solid fa-envelope"></i>
-        <input type="email" placeholder="Correo electrónico" formControlName="email" />
+        <input type="email" placeholder="Correo electrónico" formControlName="email"/>
       </div>
+      @if(email?.errors?.['email'] && email?.touched){
+        <p class="email_error">El email no es válido</p>
+      }
+      
 
       <div class="password">
         <i class="fa-solid fa-lock"></i>

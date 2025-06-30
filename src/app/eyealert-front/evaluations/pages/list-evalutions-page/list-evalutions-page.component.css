@@ -1,0 +1,58 @@
+.list_evaluations{
+    background-color: #fff;
+    padding: 3rem;    
+    border-radius: 5rem 2rem 2rem 5rem;
+    box-shadow: 1px 3px 10px #a5a5a5;
+    display: grid;
+    height: 100%;
+    grid-template-rows: auto 1fr auto;
+}
+
+.list_evaluations__header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list_evaluations__header h2{
+    color: var(--background-color-main);
+}
+
+.list_evaluations__header div:first-child{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+/* estilos filtro por fechas */
+.filter_evaluations{
+    /* appearance: none;     */
+    border: 2px solid var(--background-color-main);
+    border-radius: .5rem;
+    background-color: #fff;
+    /* outline: var(--background-color-main); */
+    padding: .5rem 4rem;
+}
+
+
+.filter_evaluations:focus-visible{    
+    outline: none;
+}
+
+.list_evaluations__body{
+    width: 100%;
+    height: 100%;    
+    display: grid;
+    padding: 2rem 0;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: min-content;
+    gap: 3rem;
+    /* align-content:  center; */
+    /* overflow-y: auto; */
+}
+
+
+.list_evaluations__pagination{
+    display: flex;
+    justify-content: center;        
+}

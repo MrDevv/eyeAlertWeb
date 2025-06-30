@@ -57,6 +57,12 @@
     margin-top: 10px;
 }
 
+.email_error{
+    width: 100%;
+    color: rgb(192, 0, 0);
+    text-align: end;    
+}
+
 .login__data-form i{
     color: var(--background-color-main);
     font-size: 20px;

@@ -1,0 +1,36 @@
+.pagination{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 2rem;
+}
+
+.pagination>div{
+    padding: 1.5rem 2rem;
+    color: #fff;    
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: .5px .5px 5px #a5a5a5;
+}
+
+.pagination_option{
+    background-color: #fff;    
+}
+
+.pagination_option span{
+    color: var(--background-color-main);
+}
+
+.rows{
+    background-color: rgb(141, 141, 141);
+}
+
+.pagination_option--active{    
+    background-color: var(--background-color-main);    
+}
+
+
+.pagination_option--active span{
+    color: #fff;
+}

@@ -1,3 +1,11 @@
-  <div class="container-loader">
+<div class="container-loader">
+
+  @if (!message()) {
     <span class="loader"></span>
-  </div>
+  }@else{
+    <div class="container-loader__message">
+      <p>{{ message() }}</p>
+      <span class="loader"></span>
+    </div>
+  }
+</div>

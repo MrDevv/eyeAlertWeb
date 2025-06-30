@@ -28,6 +28,9 @@
 /* estilos contenedor últimas evaluaciones */
 .home__main_data-lastest-evaluations{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .home__main_data-lastest-evaluations h2,
@@ -37,6 +40,7 @@
 }
 
 .lastest-evaluations-header{
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,26 +61,11 @@
 
 
 .lastest-evaluations-body{
+    width: 100%;
     padding: 1rem 0 1.5rem ;
     display: grid;
     grid-template-columns: repeat(4, 1fr);    
     gap: 30px;
-}
-
-
-.new-evaluations-button{
-    text-decoration: none;    
-    width: max-content;
-    display: block;
-    gap: 1rem;
-    align-items: center;
-    background-color: var(--background-color-main);
-    padding: 1.2rem 10rem;
-    border-radius: 10px;
-    font-size: 1.5rem;    
-    margin: 0 auto;
-    font-weight: 700;  
-    color: #fff;
 }
 
 

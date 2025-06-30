@@ -1,5 +1,5 @@
 
-export interface ResponseHttpDTO<T>{
+export interface ResponseHttp<T>{
         status: string;
         code: number;
         message: string;

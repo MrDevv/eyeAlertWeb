@@ -1,1 +1,46 @@
-<p>my-evalutions-page works!</p>
+<div class="list_evaluations">
+    <div class="list_evaluations__header">
+        <div>
+            <h2>Evaluaciones</h2>
+
+            <select class="filter_evaluations" name="filter_evaluations" id="filter_evaluations">
+                <option value="0" selected>Últimos 7 días</option>
+                <option value="1">Este mes</option>
+                <option value="2">Este año</option>
+            </select>
+
+            @if(resourceEvaluation.hasValue()){
+                <span> {{ dataPagination?.offset! + dataPagination?.numberOfElements! }} de {{ dataPagination?.totalElements }} evaluaciones</span>
+            }
+        </div>
+
+        <a 
+            routerLink="/evaluations/new-evaluation"
+            class="new-evaluations-button"
+        >
+            <i class="fa-solid fa-plus-minus"></i>
+            {{'nueva evaluación' | uppercase }}
+        </a>    
+    </div>
+
+    <div class="list_evaluations__body">
+        @for (evaluation of evaluations; track $index) {
+            <card-evaluation [evaluation]="evaluation"/>
+        }
+    </div>
+
+    @if(resourceEvaluation.hasValue()){
+        <div class="list_evaluations__pagination">
+                <pagination 
+                    [currentPage]="currentPage()"
+                    [dataPagination]="dataPagination"
+                    (pageChange)="navigateToPage($event)"
+                    
+                />
+        </div>
+    }
+</div>
+
+@if(resourceEvaluation.isLoading()){
+    <loader [message]="'Cargando evaluaciones...'" />
+}

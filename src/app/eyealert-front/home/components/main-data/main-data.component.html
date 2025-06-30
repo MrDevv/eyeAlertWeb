@@ -53,15 +53,7 @@
     <div class="informative-data-body">
       @if(informativeDataRandom().hasValue()){
         @for (informativeData of informativeDataRandom().value()?.data; track $index) {
-          <div class="card-informative-data animate">
-            <p>
-              {{
-                informativeData.descripcion
-                  | slice : 0 : 69
-              }}...
-            </p>
-            <i class="fa-solid fa-lightbulb fa-rotate-180"></i>
-          </div>
+          <card-informative-data [informativeData]="informativeData"/>          
         }    
       }@else {
         <div class="loader_skeleton__card_informative_data"></div>

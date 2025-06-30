@@ -6,10 +6,11 @@ import { InformativeDataDTO } from '../../../informative-data/interfaces/Informa
 import { EvaluationsByUserDTO } from '../../../evaluations/interfaces/EvaluationsByUserDTO';
 import { CardEvaluationComponent } from '../../../shared/components/card-evaluation/card-evaluation.component';
 import { RouterLink } from '@angular/router';
+import { CardInformativeDataComponent } from "../../../shared/components/card-informative-data/card-informative-data.component";
 
 @Component({
   selector: 'main-data',
-  imports: [RouterLink, SlicePipe, CardEvaluationComponent, UpperCasePipe],
+  imports: [RouterLink, SlicePipe, CardEvaluationComponent, UpperCasePipe, CardInformativeDataComponent],
   templateUrl: './main-data.component.html',  
   styleUrl: './main-data.component.css'
 })

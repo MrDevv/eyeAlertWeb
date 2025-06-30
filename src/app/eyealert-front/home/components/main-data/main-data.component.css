@@ -68,7 +68,6 @@
     gap: 30px;
 }
 
-
  /* estilos contenedor datos informativos  */
 .informative-data-header{
     display: flex;
@@ -95,25 +94,6 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
-
-.card-informative-data{
-    border-radius: 10px;
-    padding: 2.5rem 1rem;
-    text-align: center;
-    background-color: #B4D7FF;
-    max-width: 300px;
-    position: relative;
-    font-size: 1.7rem;
-}
-
-.card-informative-data i{
-    position: absolute;
-    left: 20px;
-    bottom: 15px;
-    color: #fff;
-    font-size: 25px;
-}
-
 
 
 

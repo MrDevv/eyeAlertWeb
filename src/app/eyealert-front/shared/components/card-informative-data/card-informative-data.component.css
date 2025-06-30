@@ -1,0 +1,30 @@
+
+.card-informative-data{
+    border-radius: 10px;
+    padding: 2.5rem 1rem;
+    text-align: center;
+    background-color: #B4D7FF;
+    max-width: 300px;
+    position: relative;
+    font-size: 1.7rem;
+    cursor: pointer;    
+    transition: all .5s ease-in-out;
+}
+
+.card-informative-data i{
+    position: absolute;
+    left: 20px;
+    bottom: 15px;
+    color: #fff;
+    font-size: 25px;
+    transition: all .5s ease-in-out;
+}
+
+
+.card-informative-data:hover{
+    scale: 1.03;    
+}
+
+.card-informative-data:hover i{
+    color: #c2c200;    
+}

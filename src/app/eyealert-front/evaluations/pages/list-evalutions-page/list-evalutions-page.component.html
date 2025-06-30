@@ -3,11 +3,15 @@
         <div>
             <h2>Evaluaciones</h2>
 
-            <select class="filter_evaluations" name="filter_evaluations" id="filter_evaluations">
-                <option value="0" selected>Últimos 7 días</option>
-                <option value="1">Este mes</option>
-                <option value="2">Este año</option>
-            </select>
+            <form [formGroup]="filterForm">
+                <select 
+                    formControlName="filter"
+                    class="filter_evaluations" name="filter_evaluations" id="filter_evaluations">
+                    <option value=0 selected>Últimos 7 días</option>
+                    <option value=1>Este mes</option>
+                    <option value=2>Todas</option>
+                </select>
+            </form>
 
             @if(resourceEvaluation.hasValue()){
                 <span> {{ dataPagination?.offset! + dataPagination?.numberOfElements! }} de {{ dataPagination?.totalElements }} evaluaciones</span>

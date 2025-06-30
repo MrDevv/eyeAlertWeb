@@ -1,15 +1,14 @@
-import { JsonPipe, UpperCasePipe } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { UpperCasePipe } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { AlertsService } from '../../../shared/services/alerts.service';
 import { LoaderComponent } from '../../../shared/components/loader/loader.component';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-page',
-  imports: [LoaderComponent, UpperCasePipe, RouterLink, ReactiveFormsModule, JsonPipe],
+  imports: [LoaderComponent, UpperCasePipe, RouterLink, ReactiveFormsModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css',
 })

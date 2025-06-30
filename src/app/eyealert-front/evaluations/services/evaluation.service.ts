@@ -20,7 +20,7 @@ export class EvaluationService {
 
   private http = inject(HttpClient)  
   
-  getLastestEvaluation(userId: number): Observable<ResponseHttp<EvaluationsByUserDTO>>{                
+  public getLastestEvaluation(userId: number): Observable<ResponseHttp<EvaluationsByUserDTO>>{                
     return this.http.get<ResponseHttp<EvaluationsByUserDTO>>(`${BASEURL}/usuarios/${userId}/evaluaciones/latest?size=4`).pipe(      
       catchError((err: ResponseErrorHttpDTO) => {        
         return throwError(() => err)
@@ -28,18 +28,49 @@ export class EvaluationService {
     )
   }
 
-  getEvaluationsByUser(userId: number, page: number = 0, size: number = 25):Observable<ResponseHttp<ContentData<EvaluationsByUserDTO>>>{
+  public getEvaluationsByUser(userId: number, page: number = 0, size: number = 25):Observable<ResponseHttp<ContentData<EvaluationsByUserDTO>>>{
     return this.http.get<ResponseHttp<ContentData<EvaluationsByUserDTO>>>(`${BASEURL}/usuarios/${userId}/evaluaciones`, {
       params: {
         page,
         size
       }
     }).pipe(
-      tap(resp => console.log(resp))
+      tap(resp => console.log(resp)),
+      catchError((err: ResponseErrorHttpDTO) => {
+        return throwError(()=> err)
+      })
     )
   }
 
-  getQuestionsEvaluation(){
+  public getEvaluationsLastSevenDays(userId: number, page: number = 0, size: number = 25){
+    return this.http.get<ResponseHttp<ContentData<EvaluationsByUserDTO>>>(`${BASEURL}/usuarios/${userId}/evaluaciones/latest-seven-days`, {
+      params: {
+        page,
+        size
+      }
+    }).pipe( 
+      tap(resp => console.log(resp)),
+      catchError((err: ResponseErrorHttpDTO) => {
+        return throwError(()=> err)
+      })
+    )
+  }
+
+    public getEvaluationsLastMonth(userId: number, page: number = 0, size: number = 25){
+    return this.http.get<ResponseHttp<ContentData<EvaluationsByUserDTO>>>(`${BASEURL}/usuarios/${userId}/evaluaciones/last-month`, {
+      params: {
+        page,
+        size
+      }
+    }).pipe( 
+      tap(resp => console.log(resp)),
+      catchError((err: ResponseErrorHttpDTO) => {
+        return throwError(()=> err)
+      })
+    )
+  }
+
+  public getQuestionsEvaluation(){
     return this.http.get(`${BASEURL}/preguntas`).pipe(
       catchError((err: ResponseErrorHttpDTO) => {
         return throwError(() => err)
@@ -47,7 +78,7 @@ export class EvaluationService {
     )
   }
 
-  prediction(dataEvaluation: EvaluationPredictDTO): Observable<EvaluationResultDTO>{
+  public prediction(dataEvaluation: EvaluationPredictDTO): Observable<EvaluationResultDTO>{
     return this.http.post<EvaluationResultDTO>(`${baseUrlML}/evaluation`, dataEvaluation).pipe(
       tap((resp) => {
         console.log(resp);        
@@ -56,5 +87,5 @@ export class EvaluationService {
         return throwError(() => err)
       })
     )
-  }
+  }  
 }

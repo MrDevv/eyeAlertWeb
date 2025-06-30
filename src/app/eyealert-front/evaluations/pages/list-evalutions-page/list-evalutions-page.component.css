@@ -26,12 +26,16 @@
 
 /* estilos filtro por fechas */
 .filter_evaluations{
-    /* appearance: none;     */
-    border: 2px solid var(--background-color-main);
-    border-radius: .5rem;
-    background-color: #fff;
-    /* outline: var(--background-color-main); */
-    padding: .5rem 4rem;
+    appearance: none;    
+    border: none;    
+    border-radius: .6rem;
+    background-color: #ececec;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="black" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    cursor: pointer;    
+    padding: .6rem 5rem;
 }
 
 

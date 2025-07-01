@@ -10,7 +10,7 @@ import { CardInformativeDataComponent } from "../../../shared/components/card-in
 
 @Component({
   selector: 'main-data',
-  imports: [RouterLink, SlicePipe, CardEvaluationComponent, UpperCasePipe, CardInformativeDataComponent],
+  imports: [RouterLink, CardEvaluationComponent, UpperCasePipe, CardInformativeDataComponent],
   templateUrl: './main-data.component.html',  
   styleUrl: './main-data.component.css'
 })

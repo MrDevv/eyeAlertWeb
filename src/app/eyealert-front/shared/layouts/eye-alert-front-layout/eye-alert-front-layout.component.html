@@ -1,5 +1,18 @@
+<div class="topbar">
+        <i (click)="sideBarService.open()" class="fa-solid fa-bars"></i>
 
-<div class="eye-alert-layout">
+        <h1 class="topbar__title">EyeAlert</h1>
+
+        <img class="topbar__logo" src="/assets/icons/logo-login.svg" alt="logo">
+</div>
+<div [class.no-scroll]="sideBarService.isSideBarVisible()" class="eye-alert-layout">
+    @if (sideBarService.isSideBarVisible()) {        
+        <div 
+        (click)="sideBarService.close()"
+        [class.opacity]="sideBarService.isSideBarVisible()"
+        >
+        </div>
+    }    
     <side-bar/>
     
     <section>

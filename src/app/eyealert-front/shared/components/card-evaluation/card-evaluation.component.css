@@ -33,3 +33,14 @@
     background-color: #D7FFEC;    
 }
 
+
+@media (max-width: 480px) {
+    .card-evaluation{
+        padding: 1.5rem;
+        min-width: max-content;
+    }
+    
+    .card-evaluation p{
+        font-size: 2rem;
+    }
+}

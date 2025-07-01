@@ -106,3 +106,27 @@
         opacity: 1;
     }
 }
+
+
+/* reponsive celulares */
+@media (max-width: 480px) {    
+    .home{        
+        gap: 2rem;
+        padding: 0 1rem 2rem;
+        display: grid;
+        grid-template-columns: 1fr !important;
+    }
+
+    .main-data{    
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+
+    .card-user-score{
+        grid-row: 3/4;
+    }
+
+    .card-user-ranking{
+        grid-row: 4/5;
+    }
+}

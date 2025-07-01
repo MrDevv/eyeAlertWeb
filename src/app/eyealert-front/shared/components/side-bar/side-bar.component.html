@@ -1,4 +1,7 @@
-<div class="sidebar">
+<div 
+  [class.show-sidebar]="sideBarService.isSideBarVisible()"
+  class="sidebar"
+>
   <div
     routerLink="home"
     class="sidebar__logo">
@@ -10,6 +13,7 @@
       routerLink="home"
       routerLinkActive="sidebar__option--active"
       class="sidebar__option"
+      (click)="sideBarService.close()"
     >
       <i class="fa-solid fa-house"></i>
       <span>Inicio</span>
@@ -19,6 +23,7 @@
       routerLink="evaluations"
       routerLinkActive="sidebar__option--active"
       class="sidebar__option"
+      (click)="sideBarService.close()"
     >
       <i class="fa-solid fa-clock-rotate-left"></i>
       <span>Evaluaciones</span>
@@ -28,6 +33,7 @@
       routerLink="informative-data"
       routerLinkActive="sidebar__option--active"
       class="sidebar__option"
+      (click)="sideBarService.close()"
     >
       <i class="fa-solid fa-lightbulb fa-rotate-180"></i>
       <span>Datos informativos</span>
@@ -37,6 +43,7 @@
       routerLink="quiz"
       routerLinkActive="sidebar__option--active"
       class="sidebar__option"
+      (click)="sideBarService.close()"
     >
       <i class="fa-solid fa-gamepad"></i>
       <span>¡Aprende jugando!</span>
@@ -46,6 +53,7 @@
       routerLink="statistics"
       routerLinkActive="sidebar__option--active"
       class="sidebar__option"
+      (click)="sideBarService.close()"
     >
       <i class="fa-solid fa-chart-simple"></i>
       <span>Estadísticas</span>

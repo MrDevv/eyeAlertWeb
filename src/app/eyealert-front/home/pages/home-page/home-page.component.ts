@@ -32,9 +32,8 @@ export class HomePageComponent {
 
   informativeDataRandomResource = rxResource({
     request: () => ({}),
-    loader: ({request}) =>{
-      const resp = this.informativeData.getInformativeDataRandom()            
-      return resp
+    loader: ({request}) =>{              
+      return this.informativeData.getInformativeDataRandom()
     }    
   })
 

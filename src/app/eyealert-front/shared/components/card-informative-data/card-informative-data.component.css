@@ -28,3 +28,19 @@
 .card-informative-data:hover i{
     color: #c2c200;    
 }
+
+/* reponsive celulares */
+@media (max-width: 480px) {
+    
+    .card-informative-data{
+        max-width: max-content;
+        font-size: 1.4rem;
+        height: 100%;        
+        /* text-align: left; */
+    }
+
+    .card-informative-data i{
+        bottom: 1rem;
+        left: 1rem;
+    }
+}

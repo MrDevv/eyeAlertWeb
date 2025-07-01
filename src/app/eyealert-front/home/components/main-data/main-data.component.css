@@ -3,7 +3,8 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    padding: 40px;}
+    padding: 40px;
+}
 
 .home__main_data-presentation{
     padding: 2rem 3rem 4rem;
@@ -123,4 +124,63 @@
     100% {
         opacity: 1;
     }
+}
+
+
+/* reponsive celulares */
+@media (max-width: 480px) {    
+
+    .home__main_data{
+        padding: 2rem;
+        gap: 3rem;
+    }
+
+    .home__main_data-presentation{
+        padding: 2rem;
+        border-radius: 3rem;
+    }
+
+    .home__main_data-presentation h1{
+        font-size: 2rem;
+        font-weight: 800;
+    }
+
+    .home__main_data-presentation p{
+        font-size: 1.7rem;
+        margin-top: 1.2rem;
+    }    
+
+    .lastest-evaluations-header h2{
+        font-size: 1.9rem;
+    }
+
+    .lastest-evaluations-header a{
+        font-size: 1.2rem;
+    }
+
+    .lastest-evaluations-body{
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .informative-data-header h2{
+        font-size: 1.9rem;
+    }
+
+    .informative-data-header a{
+        font-size: 1.2rem;
+    }
+    
+    .informative-data-body{
+        grid-template-columns: 1fr 1fr;
+        /* grid-auto-rows: 1fr; */
+    }
+
+    .new-evaluations-button{
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+    }
+    
 }

@@ -15,8 +15,12 @@ export class InformativeDataService {
 
   http = inject(HttpClient)
 
-  getInformativeDataRandom(): Observable<ResponseHttp<InformativeDataDTO[]>>{
-    return this.http.get<ResponseHttp<InformativeDataDTO[]>>(`${BASEURL}/datosInformativos/aleatorios`).pipe(            
+  getInformativeDataRandom(size: number = 12): Observable<ResponseHttp<InformativeDataDTO[]>>{
+    return this.http.get<ResponseHttp<InformativeDataDTO[]>>(`${BASEURL}/datosInformativos/aleatorios`,{
+      params: {
+        size
+      }
+    }).pipe(            
       map((resp) => resp),
       catchError((err: HttpErrorResponse) => {
         console.log(err);

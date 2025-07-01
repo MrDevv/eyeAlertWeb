@@ -120,3 +120,11 @@
     color: #fff;
     margin: auto;
 }
+
+@media (max-width: 480px) {
+    .new_evaluation{
+        border-radius: 0;
+        padding: 2rem 3rem;
+        max-height: max-content;
+    }
+}

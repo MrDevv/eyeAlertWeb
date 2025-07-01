@@ -56,3 +56,12 @@
     padding: 1rem 8rem;
     color: #fff;
 }
+
+@media (max-width: 480px) {
+    .modal_risk_level{
+        width: 100%;
+    }
+
+}
+
+

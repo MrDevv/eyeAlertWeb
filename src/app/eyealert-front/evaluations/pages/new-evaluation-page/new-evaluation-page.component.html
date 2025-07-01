@@ -9,7 +9,10 @@
                     <ul class="body__question">                
                         @for(question of questionsResource.value().data; track question.id; let index = $index){
                             <li>
-                                <p>{{index + 1}}. {{question.pregunta}} : </p>
+                                <p>
+                                    {{index + 1}}. {{question.pregunta}} 
+                                    {{ question.nombre == 'edad' ? "(mayor o igual a 40 años)" : '' }} : 
+                                </p>
                                 @if (question.nombre == 'edad') {
                                     <input                                                                                
                                         type="number"                                        
@@ -52,10 +55,7 @@
                 </form>
             </div>
         </div>
-    }
-
-    <!-- {{ questionForm.value | json }}
-    {{ questionForm.valid }} -->
+    }    
 </div>
 
 @if (!questionsResource.value() && !questionsResource.error() || isLoading()) {

@@ -6,6 +6,7 @@ import { StatisticsPageComponent } from './statistics/pages/statistics-page/stat
 import { HomePageComponent } from './home/pages/home-page/home-page.component';
 import { EyeAlertFrontLayoutComponent } from './shared/layouts/eye-alert-front-layout/eye-alert-front-layout.component';
 import { ListEvalutionsPageComponent } from './evaluations/pages/list-evalutions-page/list-evalutions-page.component';
+import { EditProfileComponent } from './user-profile/pages/edit-profile/edit-profile.component';
 
 export const routes: Routes = [
     {
@@ -31,6 +32,10 @@ export const routes: Routes = [
             {
                 path: 'statistics',
                 component: StatisticsPageComponent
+            },
+            {
+                path: 'edit-profile',
+                component: EditProfileComponent
             },
             {
                 path: '**',

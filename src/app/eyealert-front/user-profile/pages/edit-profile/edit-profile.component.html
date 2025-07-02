@@ -1,0 +1,59 @@
+<div class="edit_profile">
+    <div class="edit_profile__header">
+        <h2>{{'Editar perfil de usuario' | uppercase}}</h2>
+        <img src="/assets/icons/user-image.jpg" alt="user icon">
+    </div>
+
+    <div class="edit_profile__body">
+        <h3>Datos</h3>
+        <form 
+            (ngSubmit)="onSubmitDataUser()"
+            [formGroup]="formUserData" 
+            class="body__form_user_data"
+        >
+            <div class="nombres">
+                <span>Nombres</span>
+                <input 
+                    [class.error]="isControlInvalid('nombres')"
+                    formControlName="nombres"                    
+                    type="text"
+                >
+            </div>
+            <div class="apellidos">
+                <span>Apellidos</span>
+                <input 
+                    [class.error]="isControlInvalid('apellidos')"
+                    formControlName="apellidos"                    
+                    type="text"
+                >
+            </div>
+            <div class="email">
+                <span>Correo</span>
+                <input 
+                    [class.error]="isControlInvalid('email')"
+                    formControlName="email"                    
+                    type="email"
+                >
+            </div> 
+            <button>Actualizar Datos</button>
+        </form>        
+
+        <h3>Contraseña</h3>
+        <form class="body__form_passwords">
+            <div class="password_actual">
+                <span>Contraseña Actual</span>
+                <input type="password">
+            </div>
+            <div class="password_nueva">
+                <span>Nueva Contraseña</span>
+                <input type="password">
+            </div>
+            <button>Actualizar Contraseña</button>
+        </form>
+    </div>
+</div>
+
+
+@if(!authService.user()){
+    <loader/>
+}

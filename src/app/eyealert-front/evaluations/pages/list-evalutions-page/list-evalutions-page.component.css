@@ -24,6 +24,14 @@
     gap: 3rem;
 }
 
+.body__message_not_evaluations{
+    grid-column: 1/6;
+    text-align: center;
+    font-weight: 500;
+    padding: 2rem 0;
+    font-size: 1.8rem;
+}
+
 /* estilos filtro por fechas */
 .filter_evaluations{
     appearance: none;    

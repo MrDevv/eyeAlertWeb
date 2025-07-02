@@ -69,6 +69,12 @@
     gap: 30px;
 }
 
+.body__message_not_evaluations{
+    font-weight: 500;
+    text-align: center;
+    grid-column: 1/5;
+}
+
  /* estilos contenedor datos informativos  */
 .informative-data-header{
     display: flex;
@@ -181,6 +187,15 @@
         padding-left: 0;
         padding-right: 0;
         text-align: center;
+    }
+
+    .loader_skeleton__card_evaluation{
+        width: 100%;
+    }
+
+
+    .loader_skeleton__card_informative_data{
+        width: 100%;
     }
     
 }

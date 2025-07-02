@@ -1,0 +1,118 @@
+.edit_profile{
+    width: 100%;
+    max-width: 70rem;
+    height: 100%;
+    border-radius: 5rem;
+    background-color: #fff;
+    padding: 3rem 4rem;
+}
+
+.edit_profile__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit_profile__header img{
+    width: 9rem;
+}
+
+
+.body__form_user_data{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.edit_profile__body form>div{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+
+.edit_profile__body h3{
+    font-size: 2.2rem;    
+}
+
+.edit_profile__body button{
+    background-color: var(--background-color-main);
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 700;
+    color: #fff;
+    padding: 1rem;
+    font-size: 1.7rem;
+}
+
+
+.edit_profile__body input{
+    border: 1px solid #e1e1e1;
+    background-color: #f8f8f8;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+.edit_profile__body input:focus-visible{
+    outline: none;
+}
+
+.email{
+    grid-column: 1/3;
+}
+
+.body__form_user_data{
+    padding: 1rem 0 3rem;
+}
+
+.body__form_user_data button{
+    grid-column: 1/3;
+}
+
+.body__form_passwords{
+    padding: 1rem 0 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.body__form_passwords button{
+    width: 100%;
+}
+
+.error{
+    border: 1.3px solid red !important;
+}
+
+
+/* diseño responsivo celulares */
+@media (max-width: 480px) {
+    .edit_profile{
+        border-radius: 0;
+        padding: 2rem;
+    }
+
+    .edit_profile__header h2{
+        font-size: 1.9rem;
+    }
+
+    .edit_profile__header img{
+        width: 6rem;
+    }
+
+    .body__form_user_data{
+        grid-template-columns: 1fr;
+    }
+
+    .edit_profile__body h3{
+        font-size: 1.9rem;
+    }
+
+    .email{
+        grid-column: 1/2;
+    }
+
+    .body__form_user_data button{
+        grid-column: 1/2;
+    }
+}

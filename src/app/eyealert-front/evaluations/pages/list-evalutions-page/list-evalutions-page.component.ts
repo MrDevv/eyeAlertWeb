@@ -49,11 +49,11 @@ export class ListEvalutionsPageComponent {
   })
 
   get evaluations(): EvaluationDTO[] | undefined {
-    return this.resourceEvaluation.value()?.data.content.evaluaciones
+    return this.resourceEvaluation.value()?.data?.content.evaluaciones
   }
 
   get dataPagination(): DataPageable | undefined{    
-    return this.resourceEvaluation.value()?.data.pageable
+    return this.resourceEvaluation.value()?.data?.pageable
   }
 
   navigateToPage(page: number){

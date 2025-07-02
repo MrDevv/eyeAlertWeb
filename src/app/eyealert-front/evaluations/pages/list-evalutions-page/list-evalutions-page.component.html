@@ -13,7 +13,7 @@
                 </select>
             </form>
 
-            @if(resourceEvaluation.hasValue()){
+            @if(resourceEvaluation.hasValue() && evaluations){
                 <span> {{ dataPagination?.offset! + dataPagination?.numberOfElements! }} de {{ dataPagination?.totalElements }} evaluaciones</span>
             }
         </div>
@@ -28,12 +28,16 @@
     </div>
 
     <div class="list_evaluations__body">
-        @for (evaluation of evaluations; track $index) {
-            <card-evaluation [evaluation]="evaluation"/>
+        @if(!evaluations && !resourceEvaluation.isLoading()){
+            <p class="body__message_not_evaluations">No se encontraron evaluaciones</p>
+        }@else {
+            @for (evaluation of evaluations; track $index) {
+                <card-evaluation [evaluation]="evaluation"/>
+            }
         }
     </div>
 
-    @if(resourceEvaluation.hasValue()){
+    @if(resourceEvaluation.hasValue() && evaluations){
         <div class="list_evaluations__pagination">
                 <pagination 
                     [currentPage]="currentPage()"

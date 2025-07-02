@@ -18,8 +18,12 @@
 
     <div class="lastest-evaluations-body">      
       @if (lastestEvaluations().hasValue()) {
-        @for (evaluation of lastestEvaluations().value()?.data?.evaluaciones; track $index) {          
-          <card-evaluation [evaluation]="evaluation"/>          
+        @if(!lastestEvaluations().value()?.data){
+          <p class="body__message_not_evaluations">Aún no tiene evaluaciones, para realiazar una presione en el botón de abajo</p>
+        }@else {
+          @for (evaluation of lastestEvaluations().value()?.data?.evaluaciones; track $index) {          
+            <card-evaluation [evaluation]="evaluation"/>          
+          }
         }
       }@else {
           <div class="loader_skeleton__card_evaluation">            

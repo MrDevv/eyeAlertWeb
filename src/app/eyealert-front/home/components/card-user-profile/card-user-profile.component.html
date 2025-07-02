@@ -5,9 +5,9 @@
   <div class="home__user_profile-data">
       <h3>{{ user()?.nombres }}</h3>
       <span> {{ user()?.rol }} </span>
-      <span>{{ user()?.email }}</span>           
+      <span>{{ user()?.email }}</span>
   </div>
-  <button class="home__user_profile-button-edit">
+  <a routerLink="/edit-profile" class="home__user_profile-button-edit">
     {{ "Editar datos" | uppercase }}
-  </button>
+  </a>
 </div>

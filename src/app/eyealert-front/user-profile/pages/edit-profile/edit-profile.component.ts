@@ -1,5 +1,5 @@
 import { JsonPipe, UpperCasePipe } from '@angular/common';
-import { Component, effect, inject } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { AuthService } from '../../../../auth/services/auth.service';
 import { LoaderComponent } from '../../../../shared/components/loader/loader.component';
 import { FormBuilder, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
@@ -15,6 +15,10 @@ export class EditProfileComponent {
   public readonly authService = inject(AuthService)
   private readonly fb = inject(FormBuilder)
   private readonly alertsService = inject(AlertsService)
+
+  public readonly showPasswordCurrent = signal<boolean>(false)
+  public readonly showNewPassword = signal<boolean>(false)
+  public readonly showNewPasswordConfirm = signal<boolean>(false)
 
   public readonly formUserData: FormGroup = this.fb.group({
     nombres: ['', Validators.required],

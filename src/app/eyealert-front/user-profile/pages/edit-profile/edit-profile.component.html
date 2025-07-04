@@ -42,11 +42,42 @@
         <form class="body__form_passwords">
             <div class="password_actual">
                 <span>Contraseña Actual</span>
-                <input type="password">
+                <div class="password_container">
+                    <input [type]="showPasswordCurrent() ?  'text' : 'password'">
+                    <i 
+                        (click)="showPasswordCurrent.set(!showPasswordCurrent())" 
+                        class="fa-solid"
+                        [class.fa-eye]="!showPasswordCurrent()"
+                        [class.fa-eye-slash]="showPasswordCurrent()"
+                        >
+                    </i>
+                </div>
             </div>
             <div class="password_nueva">
                 <span>Nueva Contraseña</span>
-                <input type="password">
+                <div class="password_container">
+                    <input [type]="showNewPassword() ?  'text' : 'password'">
+                    <i 
+                        (click)="showNewPassword.set(!showNewPassword())" 
+                        class="fa-solid"
+                        [class.fa-eye]="!showNewPassword()"
+                        [class.fa-eye-slash]="showNewPassword()"
+                        >
+                    </i>
+                </div>
+            </div>
+            <div class="password_nueva_repetir">
+                <span>Confirmar Contraseña</span>
+                <div class="password_container">
+                    <input [type]="showNewPasswordConfirm() ?  'text' : 'password'">
+                    <i 
+                        (click)="showNewPasswordConfirm.set(!showNewPasswordConfirm())"
+                        class="fa-solid"
+                        [class.fa-eye]="!showNewPasswordConfirm()"
+                        [class.fa-eye-slash]="showNewPasswordConfirm()"
+                        >
+                    </i>
+                </div>
             </div>
             <button>Actualizar Contraseña</button>
         </form>

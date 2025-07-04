@@ -47,6 +47,7 @@
 
 
 .edit_profile__body input{
+    width: 100%;
     border: 1px solid #e1e1e1;
     background-color: #f8f8f8;
     padding: 1rem;
@@ -74,6 +75,20 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
+}
+
+.password_container{
+    width: 100%;
+    position: relative;
+}
+
+.password_container i{
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+
 }
 
 .body__form_passwords button{

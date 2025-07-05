@@ -11,8 +11,8 @@
             [formGroup]="formUserData" 
             class="body__form_user_data"
         >
-            <div class="nombres">
-                <span>Nombres</span>
+            <div class="nombres">                
+                <span>Nombres</span>                
                 <input 
                     [class.error]="isControlInvalid('nombres')"
                     formControlName="nombres"                    
@@ -28,7 +28,10 @@
                 >
             </div>
             <div class="email">
-                <span>Correo</span>
+                <div>
+                    <span>Correo</span>
+                    <i (click)="showAlertInfoEmail()" class="fa-solid fa-circle-info"></i>
+                </div>
                 <input 
                     [class.error]="isControlInvalid('email')"
                     formControlName="email"                    

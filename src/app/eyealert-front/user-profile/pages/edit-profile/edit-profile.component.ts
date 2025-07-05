@@ -7,7 +7,7 @@ import { AlertsService } from '../../../../shared/services/alerts.service';
 
 @Component({
   selector: 'app-edit-profile',
-  imports: [UpperCasePipe, LoaderComponent, ReactiveFormsModule, JsonPipe],
+  imports: [UpperCasePipe, LoaderComponent, ReactiveFormsModule],
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.css'
 })
@@ -51,7 +51,7 @@ export class EditProfileComponent {
       return
     }
 
-    if(this.formUserData.invalid){    
+    if(this.formUserData.invalid){
       this.showAlertEmailInvalido()
       return
     }    
@@ -76,5 +76,11 @@ export class EditProfileComponent {
     this.alertsService.warning("Campos Invalidos", "Ingrese un email válido.")
   }
 
+  showAlertInfoEmail(){
+    this.alertsService.info(
+      "Importante",
+      "Recuerde que este correo es para iniciar sesión en la cuenta, procure ingresar un correo válido."
+    )
+  }
 
 }

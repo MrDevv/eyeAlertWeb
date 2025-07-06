@@ -88,6 +88,6 @@
 </div>
 
 
-@if(!authService.user()){
+@if(!authService.user() || isLoading()){
     <loader/>
 }

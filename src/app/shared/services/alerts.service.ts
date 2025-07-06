@@ -27,6 +27,16 @@ export class AlertsService {
     });
   }
 
+  success(title: string = '', message: string = ''){
+    Swal.fire({
+      title,
+      text: message,
+      icon: 'success',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#0C4D96'
+    })
+  }
+
   info(title: string = '', message: string = ''){
     Swal.fire({
       title: title,

@@ -4,6 +4,7 @@ import { AuthService } from '../../../../auth/services/auth.service';
 import { LoaderComponent } from '../../../../shared/components/loader/loader.component';
 import { FormBuilder, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import { AlertsService } from '../../../../shared/services/alerts.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-edit-profile',
@@ -15,6 +16,7 @@ export class EditProfileComponent {
   public readonly authService = inject(AuthService)
   private readonly fb = inject(FormBuilder)
   private readonly alertsService = inject(AlertsService)
+  public readonly isLoading = signal<boolean>(false)
 
   public readonly showPasswordCurrent = signal<boolean>(false)
   public readonly showNewPassword = signal<boolean>(false)
@@ -43,8 +45,10 @@ export class EditProfileComponent {
     this.formUserData.get('email')?.setValue(this.authService.user()?.email!)
   }
 
-  onSubmitDataUser(){
-    const {nombres, apellidos, email} = this.formUserData.value    
+  async onSubmitDataUser(){
+    this.isLoading.set(true)
+    const {nombres, apellidos, email} = this.formUserData.value
+    
     
     if(nombres.length == 0 || apellidos.length == 0 || email.length == 0){
       this.showAlertCamposVacios()
@@ -54,13 +58,26 @@ export class EditProfileComponent {
     if(this.formUserData.invalid){
       this.showAlertEmailInvalido()
       return
-    }    
+    }        
 
-    console.log(this.formUserData.value);
+    try{
+      const resp = await firstValueFrom(this.authService.updateUsuario(nombres.trim(), apellidos.trim(), email.trim(), this.authService.user()?.id!))
+
+      
+      if (resp.code == 200) {
+        this.showAlertSuccess()
+      }      
+      
+    }catch(err: any){      
+      if (err.code == 404) {
+        this.showAlertNotFound()
+      }
+    }    
     
+    this.isLoading.set(false)
   }
 
-  isControlInvalid(controlName: string){
+  public isControlInvalid(controlName: string){
     if (this.formUserData.controls[controlName].errors && !this.formUserData.controls[controlName].pristine) {      
       return true
     }
@@ -68,18 +85,32 @@ export class EditProfileComponent {
     return false    
   }
 
-  showAlertCamposVacios(){
+  private showAlertCamposVacios(){
     this.alertsService.warning("Campos incompletos", "Ingrese todos los campos requeridos para actualizar sus datos.")
   }
 
-  showAlertEmailInvalido(){
+  private showAlertEmailInvalido(){
     this.alertsService.warning("Campos Invalidos", "Ingrese un email válido.")
   }
 
-  showAlertInfoEmail(){
+  public showAlertInfoEmail(){
     this.alertsService.info(
       "Importante",
       "Recuerde que este correo es para iniciar sesión en la cuenta, procure ingresar un correo válido."
+    )
+  }
+
+  private showAlertNotFound(){
+    this.alertsService.error(
+      "¡Error!",
+      "El usuario no fue encontrado"
+    )
+  }
+
+  private showAlertSuccess(){
+    this.alertsService.success(
+      "¡Éxito!",
+      "Se actualizaron correctamente los datos del usuario."
     )
   }
 

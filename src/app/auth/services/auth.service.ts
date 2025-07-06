@@ -1,10 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { computed, inject, Injectable, Signal, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { catchError, delay, map, Observable, of, tap, throwError } from 'rxjs';
 import { UserDTO } from '../interfaces/UserDTO';
 import { ResponseLoginDTO } from '../interfaces/ResponseLoginDTO';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
+import { ResponseHttp } from '../../shared/interfaces/ResponseHttp';
 
 type AuthStatus = 'checking' | 'authenticated' | 'not-authenticated';
 
@@ -70,6 +71,23 @@ export class AuthService {
         return throwError(() => error);
       })
     ).subscribe()    
+  }
+
+  public updateUsuario(nombres: string, apellidos: string, email: string, userId: number): Observable<ResponseHttp<UserDTO>>{
+    return this.http.put<ResponseHttp<UserDTO>>(`${BASEURL}/usuarios/${userId}`, {
+      nombres,
+      apellidos,
+      email
+    }).pipe(      
+      map(resp => {
+        const {data } = resp        
+        this.successLogin(data!)
+        return resp        
+      }),
+      catchError((err: HttpErrorResponse) => {        
+        return throwError(() => err.error)
+      })
+    )
   }
 
   successLogin(data: UserDTO){    

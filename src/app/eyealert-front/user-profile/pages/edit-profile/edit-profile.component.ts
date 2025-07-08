@@ -28,6 +28,12 @@ export class EditProfileComponent {
     email: ['', [Validators.required, Validators.email]]
   })
 
+  public readonly formPassword: FormGroup = this.fb.group({
+    currentPassword: ['', Validators.required],
+    newPassword: ['', Validators.required],
+    passwordRepeated: ['', Validators.required]
+  })
+
   constructor(){
     effect(() => {
       this.setInitialDataUser()
@@ -65,7 +71,7 @@ export class EditProfileComponent {
 
       
       if (resp.code == 200) {
-        this.showAlertSuccess()
+        this.showAlertSuccess(resp.message)
       }      
       
     }catch(err: any){      
@@ -77,12 +83,48 @@ export class EditProfileComponent {
     this.isLoading.set(false)
   }
 
+  async onSubmitPassword(){
+    
+    const { currentPassword, newPassword, passwordRepeated } = this.formPassword.value
+
+    if (this.formPassword.invalid) {
+      this.showAlertCamposVacios()
+      return
+    }
+        
+    if (newPassword != passwordRepeated) {
+      this.showAlertPasswordsNotMatches()
+      return
+    }
+
+    try {
+      const resp = await firstValueFrom(this.authService.updatePassword(currentPassword, newPassword, passwordRepeated, this.authService.user()?.id!))
+
+      if(resp.code == 200){
+        this.showAlertSuccess(resp.message)
+                
+        this.formPassword.reset()
+      }
+
+    } catch (error: any) {
+      console.log(error);
+      if (error.code == 400) {
+        this.showAlertCurrentPasswordInvalid(error.message)        
+      }      
+    }
+    
+  }
+
   public isControlInvalid(controlName: string){
     if (this.formUserData.controls[controlName].errors && !this.formUserData.controls[controlName].pristine) {      
       return true
     }
     
     return false    
+  }
+
+  private showAlertCurrentPasswordInvalid(message: string){
+    this.alertsService.warning("Contraseña actual incorrecta", message)
   }
 
   private showAlertCamposVacios(){
@@ -107,11 +149,15 @@ export class EditProfileComponent {
     )
   }
 
-  private showAlertSuccess(){
+  private showAlertSuccess(message: string){
     this.alertsService.success(
       "¡Éxito!",
-      "Se actualizaron correctamente los datos del usuario."
+      message
     )
+  }
+
+  private showAlertPasswordsNotMatches(){
+    this.alertsService.warning("Contraseñas no válidas", "Los campos 'nueva contraseña' y 'confirmar contraseña' no coinciden, por favor revise los datos.")
   }
 
 }

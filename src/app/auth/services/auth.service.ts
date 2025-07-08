@@ -90,6 +90,18 @@ export class AuthService {
     )
   }
 
+  public updatePassword(currentPassword: string, newPassword: string, passwordRepeated: string, userId: number): Observable<ResponseHttp<null>>{
+    return this.http.patch<ResponseHttp<null>>(`${BASEURL}/usuarios/${userId}/update-password`, {
+      contraseña_actual: currentPassword,
+      nueva_contraseña: newPassword,
+      contraseña_repetida: passwordRepeated
+    }).pipe(      
+      catchError((err: HttpErrorResponse) => {
+        return throwError(() => err.error)
+      })
+    )
+  }
+
   successLogin(data: UserDTO){    
       this._user.set(data)
       this._token.set(data!.jwt)

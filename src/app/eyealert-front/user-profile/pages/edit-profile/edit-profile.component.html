@@ -42,11 +42,17 @@
         </form>        
 
         <h3>Contraseña</h3>
-        <form class="body__form_passwords">
+        <form 
+            (ngSubmit)="onSubmitPassword()"
+            [formGroup]="formPassword"
+             class="body__form_passwords"
+        >
             <div class="password_actual">
                 <span>Contraseña Actual</span>
                 <div class="password_container">
-                    <input [type]="showPasswordCurrent() ?  'text' : 'password'">
+                    <input 
+                        formControlName="currentPassword"
+                        [type]="showPasswordCurrent() ?  'text' : 'password'">
                     <i 
                         (click)="showPasswordCurrent.set(!showPasswordCurrent())" 
                         class="fa-solid"
@@ -59,7 +65,9 @@
             <div class="password_nueva">
                 <span>Nueva Contraseña</span>
                 <div class="password_container">
-                    <input [type]="showNewPassword() ?  'text' : 'password'">
+                    <input 
+                        formControlName="newPassword"
+                        [type]="showNewPassword() ?  'text' : 'password'">
                     <i 
                         (click)="showNewPassword.set(!showNewPassword())" 
                         class="fa-solid"
@@ -72,7 +80,9 @@
             <div class="password_nueva_repetir">
                 <span>Confirmar Contraseña</span>
                 <div class="password_container">
-                    <input [type]="showNewPasswordConfirm() ?  'text' : 'password'">
+                    <input 
+                        formControlName="passwordRepeated"
+                        [type]="showNewPasswordConfirm() ?  'text' : 'password'">
                     <i 
                         (click)="showNewPasswordConfirm.set(!showNewPasswordConfirm())"
                         class="fa-solid"

@@ -1,1 +1,21 @@
-<p>informative-data-page works!</p>
+<div class="list_informative_data">
+    <div class="list_informative_data__header">
+        <h2>Datos Informativos</h2>
+    </div>
+
+    <div class="list_informative_data__body">
+        @for (informativeData of listInformativeData; track $index) {
+            <card-informative-data [informativeData]="informativeData"/>
+        }        
+    </div>
+
+    @if(informativeDataResource.hasValue()){
+        <div class="list_informative_data__pagination">
+            <pagination
+                [currentPage]="currentPage()"
+                [dataPagination]="dataPagination"
+                (pageChange)="navigateToPage($event)"
+            />
+        </div>
+    }
+</div>

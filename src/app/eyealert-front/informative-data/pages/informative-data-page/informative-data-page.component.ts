@@ -36,8 +36,7 @@ export class InformativeDataPageComponent {
     request: () => ({
       page: this.currentPage() - 1
     }),
-    loader: ({request}) => {
-      console.log("ejecutnado resource");      
+    loader: ({request}) => {      
       return this.informativeDataService.getInformativeData(request.page)
     }
   })

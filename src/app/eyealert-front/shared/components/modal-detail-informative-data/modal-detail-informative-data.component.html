@@ -1,0 +1,33 @@
+<div class="modal_detail_informative_data">
+    <div class="detail_informative_data__header">
+        <h3>¿Sabías qué..?</h3>
+    </div>
+
+    <div class="detail_informative_data__body">
+        <p>            
+            {{ matDialog.data.descripcion }}            
+        </p>
+
+        <i class="fa-solid fa-lightbulb"></i>
+
+        <div class="body__buttons">
+            <a (click)="modalService.closeModal(null, false)">
+                <i class="fa-solid fa-caret-left"></i>
+                Regresar
+            </a>
+
+            <div class="buttons__fuente">
+                @if (matDialog.data.fuente_multimedia.length > 0) {
+                    <a class="button_multimedia" [href]="matDialog.data.fuente_multimedia">
+                        <i class="fa-solid fa-circle-play"></i>
+                        Ver vídeo
+                    </a>
+
+                }
+    
+                <a class="button_fuente" [href]="matDialog.data.fuente" target="_blank" rel="noopener noreferrer">Consultar fuente</a>
+            </div>
+
+        </div>
+    </div>
+</div>

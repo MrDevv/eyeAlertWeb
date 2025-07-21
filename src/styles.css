@@ -77,3 +77,9 @@ body{
     font-weight: 700;
     color: #fff;
 }
+
+/* modals */
+
+.mat-mdc-dialog-surface{
+  border-radius: 1.5rem !important;  
+}

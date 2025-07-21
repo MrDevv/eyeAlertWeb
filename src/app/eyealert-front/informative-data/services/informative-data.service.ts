@@ -1,7 +1,7 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, map, throwError, Observable, delay, tap } from 'rxjs';
+import { catchError, map, throwError, Observable, delay, tap, of } from 'rxjs';
 import { ResponseHttp } from '../../../shared/interfaces/ResponseHttp';
 import { InformativeDataDTO } from '../interfaces/InformativeDataDTO';
 import { ContentData } from '../../../shared/interfaces/ContentData';
@@ -14,7 +14,7 @@ const BASEURL = environment.baseUrl
 })
 export class InformativeDataService {
 
-  http = inject(HttpClient)
+  private readonly http = inject(HttpClient)
 
   getInformativeDataRandom(size: number = 12): Observable<ResponseHttp<InformativeDataDTO[]>>{
     return this.http.get<ResponseHttp<InformativeDataDTO[]>>(`${BASEURL}/datosInformativos/aleatorios`,{
@@ -31,13 +31,13 @@ export class InformativeDataService {
   }
 
   getInformativeData(page: number = 0, size: number = 20){
+
     return this.http.get<ResponseHttp<ContentData<InformativeDataDTO[]>>>(`${BASEURL}/datosInformativos`, {
       params: {
         page,
         size
       }
     }).pipe(
-      tap(resp => console.log(resp)),
       catchError((err: HttpErrorResponse) => {
         console.log(err);
         return throwError(() => err.error)        

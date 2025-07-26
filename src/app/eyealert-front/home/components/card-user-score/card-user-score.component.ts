@@ -1,5 +1,6 @@
 import { UpperCasePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, input, ResourceRef } from '@angular/core';
+import { UserDTO } from '../../../../auth/interfaces/UserDTO';
 
 @Component({
   selector: 'card-user-score',
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './card-user-score.component.css'
 })
 export class CardUserScoreComponent {
-
+  user = input.required<UserDTO | null>()
+  scoreUser = input.required<ResourceRef<any | undefined>>()
 }

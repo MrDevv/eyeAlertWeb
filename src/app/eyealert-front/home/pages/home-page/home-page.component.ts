@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 
 import { rxResource } from '@angular/core/rxjs-interop';
-import { catchError, of } from 'rxjs';
+import { of } from 'rxjs';
 import { CardUserProfileComponent } from '../../components/card-user-profile/card-user-profile.component';
 import { CardUserScoreComponent } from '../../components/card-user-score/card-user-score.component';
 import { CardUserRankingComponent } from '../../components/card-user-ranking/card-user-ranking.component';
@@ -9,6 +9,7 @@ import { MainDataComponent } from '../../components/main-data/main-data.componen
 import { AuthService } from '../../../../auth/services/auth.service';
 import { InformativeDataService } from '../../../informative-data/services/informative-data.service';
 import { EvaluationService } from '../../../evaluations/services/evaluation.service';
+import { QuizzService } from '../../../quizz/services/quizz.service';
 
 @Component({
   selector: 'app-home-page',
@@ -19,7 +20,8 @@ import { EvaluationService } from '../../../evaluations/services/evaluation.serv
 export class HomePageComponent {      
   authServices = inject(AuthService)
   evaluationService = inject(EvaluationService)
-  informativeData = inject(InformativeDataService)
+  informativeDataService = inject(InformativeDataService)
+  quizzService = inject(QuizzService)
 
   lastEvaluationsResource = rxResource({
     request: () => ({userId: this.authServices.user()?.id}),
@@ -33,8 +35,16 @@ export class HomePageComponent {
   informativeDataRandomResource = rxResource({
     request: () => ({}),
     loader: ({request}) =>{              
-      return this.informativeData.getInformativeDataRandom()
+      return this.informativeDataService.getInformativeDataRandom()
     }    
+  })
+
+  scoreDataResource = rxResource({
+    request: () => ({userId: this.authServices.user()?.id}),
+    loader: ({request}) => {
+      if(!request.userId) return of(undefined)
+      return this.quizzService.getScoreUser(request.userId);
+    }
   })
 
 }

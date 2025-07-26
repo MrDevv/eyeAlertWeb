@@ -48,3 +48,10 @@
     color: #fff;    
     background-color: #545903;
 }
+
+.home__user_score .message_not_score{
+    text-align: center;
+    font-weight: 500 !important;
+    color: #000 !important;
+    font-size: 1.5rem !important;
+}

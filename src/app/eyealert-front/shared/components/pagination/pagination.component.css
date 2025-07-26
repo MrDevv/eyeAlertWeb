@@ -34,3 +34,10 @@
 .pagination_option--active span{
     color: #fff;
 }
+
+
+@media (max-width: 480px) {
+    .pagination{
+        flex-wrap: wrap;
+    }
+}

@@ -12,7 +12,10 @@
     </div>
   }
 
-  <card-user-score class="card-user-score"/>
+  <card-user-score 
+    [scoreUser]="scoreDataResource"
+    [user]="authServices.user()" 
+    class="card-user-score"/>
 
   <card-user-ranking class="card-user-ranking"/>
 

@@ -1,9 +1,13 @@
 <div class="home__user_score">
   <h4 class="home__user_score-title">Último puntaje</h4>
-  <span class="home__user_score-last-points">13 puntos</span>
-  <span class="home__user_score-divider"></span>
-  <span class="home__user_score-highest-score-description">Puntaje más alto</span>
-  <span class="home__user_score-highest-score">15 puntos</span>
+  @if (scoreUser().value().data) {
+    <span class="home__user_score-last-points">{{ scoreUser().value().data.puntaje_mas_alto }} puntos</span>
+    <span class="home__user_score-divider"></span>
+    <span class="home__user_score-highest-score-description">Puntaje más alto</span>
+    <span class="home__user_score-highest-score">{{ scoreUser().value().data.ultimo_puntaje }} puntos</span>
+  }@else {
+    <span class="message_not_score">Aún no tiene puntaje, juegue para obtener uno.</span>
+  }
   <button class="home__user_score-button-play">
     {{ "¡Jugar!" | uppercase }}
   </button>

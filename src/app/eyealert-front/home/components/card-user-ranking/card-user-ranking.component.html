@@ -1,15 +1,27 @@
 <div class="home__user_ranking">
-  <h4 class="home__user_ranking-title">Ranking</h4>
-  <div class="home__user_ranking-list">
-    <ul>
-      <li><span>1</span> Miguel Vega <span>15</span></li>
-      <li><span>2</span> Anthony Dominguez <span>13</span></li>
-      <li><span>3</span> Larri León <span>11</span></li>
-      <li><span>4</span> Brayan Neciosup <span>11</span></li>
-      <li><span>5</span> Alonso Plasencia <span>6</span></li>
-    </ul>
-  </div>
-  <div class="home__user_ranking-my-position">
-    <span>1</span> Miguel Vega <span>(Mi puesto)</span>
-  </div>
+  <h4 class="home__user_ranking-title">Ranking <i (click)="showAlertInfoRanking()" class="fa-solid fa-circle-question"></i></h4>
+  @if (ranking().isLoading()) {
+    <div class="loader_skeleton__user_ranking">      
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>    
+  }@else {
+    @if (ranking().value()?.data) {            
+      <div class="home__user_ranking-list">
+        <ul>
+        @for (user of rankingValue; track user) {      
+          <li><span>{{user.puesto}}</span> {{user.nombres}} <span>{{user.puntaje}}</span></li>        
+          }
+        </ul>
+      </div>
+      @if (puestoUsuario) {    
+        <div class="home__user_ranking-my-position">
+          <span>{{ puestoUsuario.puesto }}</span> {{ puestoUsuario.nombres }} <span>(Mi puesto)</span>    
+        </div>
+      }
+    }@else {
+      <p class="message_not_ranking">Aún no hay puntos para este mes, sea el primero en obtener uno jugando.</p>
+    }
+  }
 </div>

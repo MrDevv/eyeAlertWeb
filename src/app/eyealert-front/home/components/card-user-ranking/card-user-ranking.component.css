@@ -7,6 +7,15 @@
 
 .home__user_ranking-title{
     font-size: 2.3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.home__user_ranking-title i{
+    cursor: pointer;
+    color: #8b7201;
+    font-size: 1.8rem;
 }
 
 .home__user_ranking-list{
@@ -20,7 +29,7 @@
     flex-direction: column;    
     gap: 1.3rem;
     list-style: none;
-    padding: 0;
+    padding: 0 0 1rem;
 }
 
 .home__user_ranking-list ul li{
@@ -83,4 +92,40 @@
     gap: 10px; 
     padding: 10px 20px;
     background-color: #DADADA;    
+}
+
+.message_not_ranking{
+    text-align: center;
+    font-weight: 500;
+    padding: 1rem 0;
+    font-size: 1.5rem;
+}
+
+.loader_skeleton__user_ranking{
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.loader_skeleton__user_ranking span{
+    display: block;
+    border-radius: 0.5rem;
+    width: 100%;
+    height: 2rem;
+    background-color: #a5a5a5;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse{
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
 }

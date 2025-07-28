@@ -17,7 +17,10 @@
     [user]="authServices.user()" 
     class="card-user-score"/>
 
-  <card-user-ranking class="card-user-ranking"/>
+  <card-user-ranking
+    [ranking]="rankingResource"
+    class="card-user-ranking"
+  />
 
   <main-data 
     [lastestEvaluations]="lastEvaluationsResource" 

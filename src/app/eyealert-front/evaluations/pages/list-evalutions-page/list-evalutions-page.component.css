@@ -77,6 +77,7 @@
 
     .list_evaluations__body{
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .list_evaluations__header{

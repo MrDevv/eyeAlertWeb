@@ -8,8 +8,8 @@ import { CardUserRankingComponent } from '../../components/card-user-ranking/car
 import { MainDataComponent } from '../../components/main-data/main-data.component';
 import { AuthService } from '../../../../auth/services/auth.service';
 import { InformativeDataService } from '../../../informative-data/services/informative-data.service';
-import { EvaluationService } from '../../../evaluations/services/evaluation.service';
-import { QuizzService } from '../../../quizz/services/quizz.service';
+import { EvaluationService } from '@evaluations/services/evaluation.service';
+import { QuizzService } from '@quizz/services/quizz.service';
 
 @Component({
   selector: 'app-home-page',
@@ -44,6 +44,12 @@ export class HomePageComponent {
     loader: ({request}) => {
       if(!request.userId) return of(undefined)
       return this.quizzService.getScoreUser(request.userId);
+    }
+  })
+
+  rankingResource = rxResource({
+    loader: () => {
+      return this.quizzService.getRanking();
     }
   })
 

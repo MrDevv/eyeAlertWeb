@@ -17,7 +17,7 @@ export class CardEvaluationComponent {
 
   formatDate(){    
     const fecha = this.evaluation().fecha.split(' ')[0].split('/')    
-    const date = new Date(Number(fecha[2]), Number(fecha[1]), Number(fecha[0]))
+    const date = new Date(Number(fecha[2]), Number(fecha[1]) - 1, Number(fecha[0]))
     return date;
   }
 

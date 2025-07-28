@@ -26,6 +26,7 @@
 
 .card-user-score{
     grid-row: 2/3;
+    height: fit-content;
 }
 
 .card-user-ranking{

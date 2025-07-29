@@ -6,7 +6,9 @@
     "paths": {
       "@shared/*": ["./src/app/shared/*"],
       "@quizz/*": ["./src/app/eyealert-front/quizz/*"],
-      "@evaluations/*": ["./src/app/eyealert-front/evaluations/*"]
+      "@evaluations/*": ["./src/app/eyealert-front/evaluations/*"],
+      "@auth/*": ["./src/app/auth/*"],
+      "@informative-data/*": ["./src/app/eyealert-front/informative-data*"]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,

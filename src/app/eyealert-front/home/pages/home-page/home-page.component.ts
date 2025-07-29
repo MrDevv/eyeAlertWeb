@@ -6,10 +6,12 @@ import { CardUserProfileComponent } from '../../components/card-user-profile/car
 import { CardUserScoreComponent } from '../../components/card-user-score/card-user-score.component';
 import { CardUserRankingComponent } from '../../components/card-user-ranking/card-user-ranking.component';
 import { MainDataComponent } from '../../components/main-data/main-data.component';
-import { AuthService } from '../../../../auth/services/auth.service';
-import { InformativeDataService } from '../../../informative-data/services/informative-data.service';
+
+
 import { EvaluationService } from '@evaluations/services/evaluation.service';
 import { QuizzService } from '@quizz/services/quizz.service';
+import { AuthService } from '@auth/services/auth.service';
+import { InformativeDataService } from '@informative-data//services/informative-data.service';
 
 @Component({
   selector: 'app-home-page',

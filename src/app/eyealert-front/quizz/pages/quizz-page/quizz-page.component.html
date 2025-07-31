@@ -1,0 +1,98 @@
+<div class="quizz_page">
+    @if (statusGame() == 'inicio') {
+        <div class="inicio">
+            <h3 class="inicio__title">¡Aprende jugando!</h3>
+            <p>Response 15 preguntas sobre el glaucoma, aprende mientras juegas y descubre cuánto sabes.</p>
+            <span>¡Alcanza tu mejor puntaje!</span>    
+            <button 
+                (click)="jugar()"
+                class="inicio__button_jugar">
+                <i class="fa-solid fa-play"></i>
+                jugar
+            </button>
+            <i class="fa-solid fa-gamepad"></i>
+        </div>
+    }@else if(statusGame() == 'pregunta'){        
+        <div class="pregunta">
+            <div class="barra-contenedor">
+                <div class="barra-progreso" [style.width.%]="(numPregunta() / listPreguntas().length) * 100 + 1"></div>
+            </div>
+            <div class="pregunta__header">           
+                <span>Pregunta {{ indicePregunta() + 1 }}</span>
+                <span>Categoría: {{ listPreguntas()[indicePregunta()].categoria }}</span>
+            </div>
+            <div class="pregunta__body">
+                <div class="pregunta_description">
+                    <p>{{ listPreguntas()[indicePregunta()].pregunta }}</p>
+                </div>
+                <div class="body__respuestas">                    
+                    @for (respuesta of listPreguntas()[indicePregunta()].respuestas; track respuesta.respuesta_id; let i = $index) {                            
+                        <span
+                            class="respuesta" 
+                            [class.bg-correcto]="respuestaSeleccionada()?.respuesta_id == respuesta.respuesta_id && respuesta.es_correcta"
+                            [class.bg-incorrecto]="respuestaSeleccionada()?.respuesta_id == respuesta.respuesta_id && !respuesta.es_correcta"
+                            (click)="calificar(respuesta)">
+                            
+                            {{respuesta.respuesta }}
+
+                            @if(respuestaSeleccionada() && respuesta.respuesta_id == respuestaSeleccionada()?.respuesta_id && respuesta.es_correcta){
+                                <i 
+                                    class="fa-solid fa-circle-check resultado--correcto"
+                                ></i>
+                            }@else if(respuestaSeleccionada() && respuesta.respuesta_id == respuestaSeleccionada()?.respuesta_id && !respuesta.es_correcta){
+                                <i class="fa-solid fa-circle-xmark resultado--incorrecto"
+                                ></i>
+                            }
+                        </span>
+                    }
+                </div>
+                <div class="resultado" [class.resultado--visible]="respuestaSeleccionada()">
+                    <div 
+                        class="body__resultado"
+                        [class.resultado--correcto]="esCorrecto() == 'correcto'"
+                        [class.resultado--incorrecto]="esCorrecto() == 'incorrecto'"
+                    >                        
+                        @if (esCorrecto() == 'correcto') {
+                            ¡Correcto!                        
+                        }@else if(esCorrecto() == 'incorrecto'){
+                            ¡Incorrecto!
+                        }
+                    </div>
+                    @if (explicacion()) {
+                        <div class="body__explicacion">
+                            <p><span>Respuesta correcta: </span>
+                                {{ getRespuestaCorrecta().respuesta }}
+                            </p>
+                            <p>
+                                {{ explicacion() }}
+                            </p>
+                        </div>
+                        @if (indicePregunta() == listPreguntas().length - 1) {
+                            <button class="body__button button--finalizar" (click)="finalizarJuego()">Finalizar</button>
+                        }@else {
+                            <button (click)="siguientePregunta()"
+                            class="body__button button--siguiente">Siguiente</button>                            
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    }@else if(statusGame() == 'finalizado'){
+        <div class="puntaje">
+            <p>Puntaje obtenido</p>
+            <span>{{ puntos() }}/{{ listPreguntas().length }}</span>
+            <div class="puntaje__buttons">
+                <button class="body__button button--salir" (click)="reset()">Salir</button>
+                <button class="body__button button--jugar_nuevamente" (click)="jugarNuevamente()">
+                    <i class="fa-solid fa-play"></i>
+                    Jugar de nuevo
+                </button>
+            </div>
+        </div>
+    }
+</div>
+
+
+@if (isLoading()) {
+    <loader/>
+}

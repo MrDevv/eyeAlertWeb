@@ -38,9 +38,10 @@
     font-size: 1.6rem;
 }
 
-.home__user_score button{
+.home__user_score a{
     width: 100%;
     padding: 12px;
+    text-decoration: none;
     margin-top: .5rem;
     border-radius: 10px;        
     text-align: center;

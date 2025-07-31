@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
-import { catchError, delay, Observable, throwError } from 'rxjs';
+import { catchError, delay, Observable, tap, throwError } from 'rxjs';
 import { ResponseHttp } from '../../../shared/interfaces/ResponseHttp';
 import { ResponseRanking } from '../interfaces/ResponseRanking';
 
@@ -26,6 +26,16 @@ export class QuizzService {
     return this.http.get<ResponseHttp<ResponseRanking>>(`${BASEURL}/quizzes/ranking`).pipe(
       catchError(err => {
         return throwError(() => err);
+      })
+    )
+  }
+
+  public getPreguntas(): any{
+    return this.http.get(`${BASEURL}/preguntas-quizz`).pipe(
+      delay(2000),
+      tap(resp => console.log(resp)),
+      catchError(err => {
+        return throwError(() => err)
       })
     )
   }

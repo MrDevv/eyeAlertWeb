@@ -1,10 +1,12 @@
 import { UpperCasePipe } from '@angular/common';
 import { Component, input, ResourceRef } from '@angular/core';
-import { UserDTO } from '../../../../auth/interfaces/UserDTO';
+import { RouterLink } from '@angular/router';
+
+import { UserDTO } from '@auth/interfaces/UserDTO';
 
 @Component({
   selector: 'card-user-score',
-  imports: [UpperCasePipe],
+  imports: [UpperCasePipe, RouterLink],
   templateUrl: './card-user-score.component.html',  
   styleUrl: './card-user-score.component.css'
 })

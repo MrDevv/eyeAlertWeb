@@ -49,15 +49,17 @@
       <span>¡Aprende jugando!</span>
     </li>
 
-    <li
-      routerLink="statistics"
-      routerLinkActive="sidebar__option--active"
-      class="sidebar__option"
-      (click)="sideBarService.close()"
-    >
-      <i class="fa-solid fa-chart-simple"></i>
-      <span>Estadísticas</span>
-    </li>
+    @if (authService.user()?.rol == "administrador") {
+      <li
+        routerLink="statistics"
+        routerLinkActive="sidebar__option--active"
+        class="sidebar__option"
+        (click)="sideBarService.close()"
+      >
+        <i class="fa-solid fa-chart-simple"></i>
+        <span>Estadísticas</span>
+      </li>
+    }
   </ul>
 
   <div (click)="authService.logout()" class="sidebar__logout">

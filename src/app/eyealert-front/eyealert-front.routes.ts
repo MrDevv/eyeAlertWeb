@@ -6,6 +6,7 @@ import { StatisticsPageComponent } from './statistics/pages/statistics-page/stat
 import { HomePageComponent } from './home/pages/home-page/home-page.component';
 import { EyeAlertFrontLayoutComponent } from './shared/layouts/eye-alert-front-layout/eye-alert-front-layout.component';
 import { EditProfileComponent } from './user-profile/pages/edit-profile/edit-profile.component';
+import { IsAdminGuard } from '../core/guards/is-admin.guard';
 
 export const routes: Routes = [
     {
@@ -30,7 +31,8 @@ export const routes: Routes = [
             },
             {
                 path: 'statistics',
-                component: StatisticsPageComponent
+                component: StatisticsPageComponent,
+                canMatch:  [IsAdminGuard]
             },
             {
                 path: 'edit-profile',

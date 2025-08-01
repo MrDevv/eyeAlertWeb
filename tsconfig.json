@@ -4,6 +4,7 @@
   "compileOnSave": false,
   "compilerOptions": {    
     "paths": {
+      "@environment/*": ["./src/environments/*"],
       "@shared/*": ["./src/app/shared/*"],
       "@shared-eyealert-front/*": ["./src/app/eyealert-front/shared/*"],
       "@quizz/*": ["./src/app/eyealert-front/quizz/*"],

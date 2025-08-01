@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../../environments/environment';
-import { catchError, delay, Observable, tap, throwError } from 'rxjs';
-import { ResponseHttp } from '../../../shared/interfaces/ResponseHttp';
-import { ResponseRanking } from '../interfaces/ResponseRanking';
+import { catchError, Observable, throwError } from 'rxjs';
+
 import { Quizz } from '@quizz/interfaces/Quizz';
+import { ResponseHttp } from '@shared/interfaces/ResponseHttp';
+import { ResponseRanking } from '@quizz/interfaces/ResponseRanking';
+import { environment } from '@environment/environment';
 
 const BASEURL = environment.baseUrl;
 
@@ -33,8 +34,6 @@ export class QuizzService {
 
   public getPreguntas(): any{
     return this.http.get(`${BASEURL}/preguntas-quizz`).pipe(
-      delay(2000),
-      tap(resp => console.log(resp)),
       catchError(err => {
         return throwError(() => err)
       })
@@ -46,8 +45,6 @@ export class QuizzService {
       puntaje,
       usuario_id: userId
     }).pipe(
-      delay(5000),
-      tap(resp => console.log(resp)),
       catchError(err => {
         return throwError(() => err.error)
       })

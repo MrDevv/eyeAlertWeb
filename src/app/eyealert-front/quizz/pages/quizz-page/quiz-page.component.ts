@@ -1,4 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
+import { AuthService } from '@auth/services/auth.service';
 import { QuizzService } from '@quizz/services/quizz.service';
 import { LoaderComponent } from '@shared/components/loader/loader.component';
 import { firstValueFrom } from 'rxjs';
@@ -25,6 +26,7 @@ export class QuizzPageComponent {
   public readonly numPregunta = signal(0)
 
   private readonly quizzService = inject(QuizzService);
+  private readonly authService = inject(AuthService)
 
   public async jugar(){
     this.isLoading.set(true)
@@ -73,8 +75,7 @@ export class QuizzPageComponent {
     this.numPregunta.update(value => value + 1)
     this.respuestaSeleccionada.set(respuestaSeleccionada)    
 
-    if(respuestaSeleccionada.es_correcta){
-      console.log('correcto');      
+    if(respuestaSeleccionada.es_correcta){      
       this.puntos.update(value => value + 1)
       this.esCorrecto.set('correcto')
     }else{
@@ -87,9 +88,11 @@ export class QuizzPageComponent {
     this.explicacion.set(explicacionDescripcion.explicacion)    
   }
 
-  public finalizarJuego(){
-    // TODO: guardar puntaje en la base de datos
-    this.statusGame.set('finalizado')
+  public async finalizarJuego(){    
+    if (!this.authService.user()?.id) return
+    this.isLoading.set(true)
+    await firstValueFrom(this.quizzService.saveQuizz(this.puntos(), this.authService.user()?.id!))
+    this.isLoading.set(false)    
   }
 
   public getRespuestaCorrecta(){

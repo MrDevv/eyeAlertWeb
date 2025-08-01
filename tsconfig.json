@@ -5,6 +5,7 @@
   "compilerOptions": {    
     "paths": {
       "@shared/*": ["./src/app/shared/*"],
+      "@shared-eyealert-front/*": ["./src/app/eyealert-front/shared/*"],
       "@quizz/*": ["./src/app/eyealert-front/quizz/*"],
       "@evaluations/*": ["./src/app/eyealert-front/evaluations/*"],
       "@auth/*": ["./src/app/auth/*"],

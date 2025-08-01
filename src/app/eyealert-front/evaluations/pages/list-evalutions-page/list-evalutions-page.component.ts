@@ -1,16 +1,17 @@
 import { UpperCasePipe } from '@angular/common';
 import { Component, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { CardEvaluationComponent } from "../../../shared/components/card-evaluation/card-evaluation.component";
-import { rxResource } from '@angular/core/rxjs-interop';
-import { EvaluationService } from '../../services/evaluation.service';
-import { AuthService } from '../../../../auth/services/auth.service';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { of } from 'rxjs';
-import { EvaluationDTO } from '../../interfaces/EvaluationDTO';
-import { LoaderComponent } from '../../../../shared/components/loader/loader.component';
-import { DataPageable } from '../../../../shared/interfaces/DataPageable';
-import { PaginationComponent } from "../../../shared/components/pagination/pagination.component";
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { rxResource } from '@angular/core/rxjs-interop';
+
+import { LoaderComponent } from '@shared/components/loader/loader.component';
+import { DataPageable } from '@shared/interfaces/DataPageable';
+import { PaginationComponent } from '@shared-eyealert-front/components/pagination/pagination.component';
+import { CardEvaluationComponent } from '@shared-eyealert-front/components/card-evaluation/card-evaluation.component';
+import { EvaluationDTO } from '@evaluations/interfaces/EvaluationDTO';
+import { EvaluationService } from '@evaluations/services/evaluation.service';
+import { AuthService } from '@auth/services/auth.service';
 
 enum FilterOptions {
   UltimosSieteDias = 0,
@@ -52,7 +53,7 @@ export class ListEvalutionsPageComponent {
     return this.resourceEvaluation.value()?.data?.content.evaluaciones
   }
 
-  get dataPagination(): DataPageable | undefined{    
+  get dataPagination(): DataPageable | undefined{
     return this.resourceEvaluation.value()?.data?.pageable
   }
 

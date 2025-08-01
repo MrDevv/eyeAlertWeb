@@ -4,6 +4,7 @@ import { environment } from '../../../../environments/environment';
 import { catchError, delay, Observable, tap, throwError } from 'rxjs';
 import { ResponseHttp } from '../../../shared/interfaces/ResponseHttp';
 import { ResponseRanking } from '../interfaces/ResponseRanking';
+import { Quizz } from '@quizz/interfaces/Quizz';
 
 const BASEURL = environment.baseUrl;
 
@@ -36,6 +37,19 @@ export class QuizzService {
       tap(resp => console.log(resp)),
       catchError(err => {
         return throwError(() => err)
+      })
+    )
+  }
+
+  public saveQuizz(puntaje: number, userId: number): Observable<ResponseHttp<Quizz>> {
+    return this.http.post<ResponseHttp<Quizz>>(`${BASEURL}/quizzes`, {
+      puntaje,
+      usuario_id: userId
+    }).pipe(
+      delay(5000),
+      tap(resp => console.log(resp)),
+      catchError(err => {
+        return throwError(() => err.error)
       })
     )
   }

@@ -1,13 +1,19 @@
 import { Component, effect, inject, signal } from '@angular/core';
-import { EvaluationService } from '../../services/evaluation.service';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
-import { AlertsService } from '../../../../shared/services/alerts.service';
-import { LoaderComponent } from '../../../../shared/components/loader/loader.component';
-import { EvaluationPredictDTO } from '../../interfaces/EvaluationPredictDTO';
-import { ModalService } from '../../../../shared/services/modal.service';
-import { ModalRiskLevelComponent } from '../../components/modals/modal-risk-level/modal-risk-level.component';
+import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
+
+import { LoaderComponent } from '@shared/components/loader/loader.component';
+import { EvaluationService } from '@evaluations/services/evaluation.service';
+import { AlertsService } from '@shared/services/alerts.service';
+import { EvaluationPredictDTO } from '@evaluations/interfaces/EvaluationPredictDTO';
+import { ModalService } from '@shared/services/modal.service';
+import { ModalRiskLevelComponent } from '@evaluations/components/modals/modal-risk-level/modal-risk-level.component';
+import { DetalleEvaluacion, SaveEvaluation } from '@evaluations/interfaces/SaveEvaluation';
+import { AuthService } from '@auth/services/auth.service';
+import { EvaluationResultDTO } from '@evaluations/interfaces/EvaluationResultDTO';
+import { ResponseErrorHttpDTO } from '@shared/interfaces/ResponseErrorHttpDTO';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -17,12 +23,14 @@ import { ModalRiskLevelComponent } from '../../components/modals/modal-risk-leve
   styleUrl: './new-evaluation-page.component.css'
 })
 export class NewEvaluationPageComponent {
-  evaluationService = inject(EvaluationService)
-  fb = inject(FormBuilder)
-  alertsService = inject(AlertsService)
   dataPrediction = signal<EvaluationPredictDTO | null>(null)
-  isLoading = signal<boolean>(false)
+  public readonly isLoading = signal<boolean>(false)  
 
+  evaluationService = inject(EvaluationService)
+  private readonly authService = inject(AuthService)
+  alertsService = inject(AlertsService)
+  fb = inject(FormBuilder)
+  
   modalService = inject(ModalService)
 
   questionForm = this.fb.group({})
@@ -76,16 +84,45 @@ export class NewEvaluationPageComponent {
       cataractStatus: cataractStatus
     })
 
-    this.isLoading.set(true
+    console.log(this.questionForm.controls);
+    const evaluationDetails: DetalleEvaluacion[] = Object.keys(this.questionForm.controls).map((key: string) => {
+      let respuesta: number | null = null
+      let respuesta_texto: string = ""
 
-    )
+      if (this.questionForm.get(key)?.value['respuesta_id']) {
+        respuesta = this.questionForm.get(key)?.value['respuesta_id']
+      }else{
+        respuesta_texto = this.questionForm.get(key)?.value['respuesta_texto']
+      }
+
+      return {
+        pregunta_id: this.questionForm.get(key)?.value['pregunta_id'],
+        respuesta_id: respuesta,
+        respuesta_texto: respuesta_texto
+      }
+    })    
+
+    this.isLoading.set(true)
+
     try{
-      const resp: any = await firstValueFrom(this.evaluationService.prediction(this.dataPrediction()!))
+      const resp: EvaluationResultDTO = await firstValueFrom(this.evaluationService.prediction(this.dataPrediction()!))
+
+      const evaluationData: SaveEvaluation = {
+        tiempo_prediccion: resp.prediction_time_ms,
+        tiempo_prediccion_inicio: resp.start_time,
+        tiempo_prediccion_fin: resp.end_time,
+        resultado: Number(resp.result_evaluation),
+        usuario_id: this.authService.user()?.id!,
+        detalle_evaluacion: evaluationDetails
+      }
+
+      await firstValueFrom(this.evaluationService.saveEvaluation(evaluationData))
 
       this.modalService.openModal(ModalRiskLevelComponent, resp)
 
-    }catch(err){
-      console.log(err);
+    }catch(err: any){
+      this.alertsService.error("Error", err.message)
+      console.error(err);
     }      
     this.isLoading.set(false)
   }

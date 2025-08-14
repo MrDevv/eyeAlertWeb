@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { catchError, delay, map, Observable, tap, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '@environment/environment';
@@ -12,6 +12,7 @@ import { EvaluationPredictDTO } from '@evaluations/interfaces/EvaluationPredictD
 import { EvaluationResultDTO } from '@evaluations/interfaces/EvaluationResultDTO';
 import { SaveEvaluation } from '@evaluations/interfaces/SaveEvaluation';
 import { EvaluationDTO } from '@evaluations/interfaces/EvaluationDTO';
+import { EvaluationDetails } from '@evaluations/interfaces/EvaluationDetails';
 
 
 const BASEURL = environment.baseUrl
@@ -39,10 +40,7 @@ export class EvaluationService {
         size
       }
     }).pipe(
-      tap(resp => console.log(resp)),
-      catchError((err: ResponseErrorHttpDTO) => {
-        return throwError(()=> err)
-      })
+      catchError((err: ResponseErrorHttpDTO) => throwError(()=> err))
     )
   }
 
@@ -53,10 +51,7 @@ export class EvaluationService {
         size
       }
     }).pipe(
-      tap(resp => console.log(resp)),
-      catchError((err: ResponseErrorHttpDTO) => {
-        return throwError(()=> err)
-      })
+      catchError((err: ResponseErrorHttpDTO) => throwError(()=> err))
     )
   }
 
@@ -67,36 +62,31 @@ export class EvaluationService {
         size
       }
     }).pipe(
-      tap(resp => console.log(resp)),
-      catchError((err: ResponseErrorHttpDTO) => {
-        return throwError(()=> err)
-      })
+      catchError((err: ResponseErrorHttpDTO) => throwError(()=> err))
     )
   }
 
   public getQuestionsEvaluation(){
     return this.http.get(`${BASEURL}/preguntas`).pipe(
-      catchError((err: ResponseErrorHttpDTO) => {
-        return throwError(() => err)
-      })
+      catchError((err: ResponseErrorHttpDTO) => throwError(() => err))
     )
   }
 
   public prediction(dataEvaluation: EvaluationPredictDTO): Observable<EvaluationResultDTO>{
     return this.http.post<EvaluationResultDTO>(`${baseUrlML}/evaluation`, dataEvaluation).pipe(      
-      catchError((err: ResponseErrorHttpDTO) => {
-        return throwError(() => err)
-      })
+      catchError((err: ResponseErrorHttpDTO) => throwError(() => err))
     )
   }
 
   public saveEvaluation(evaluation: SaveEvaluation){
-    return this.http.post<ResponseHttp<EvaluationDTO>>(`${BASEURL}/evaluaciones`, evaluation)
-    .pipe(
-      tap(resp => console.log(resp)),
-      catchError(err => {
-        return throwError(() => err.error)
-      })
+    return this.http.post<ResponseHttp<EvaluationDTO>>(`${BASEURL}/evaluaciones`, evaluation).pipe(
+      catchError(err => throwError(() => err.error))
+    )
+  }
+
+  public getEvaluationDetails(evaluacionId: number): Observable<ResponseHttp<EvaluationDetails>>{
+    return this.http.get<ResponseHttp<EvaluationDetails>>(`${BASEURL}/detalleEvaluacion/${evaluacionId}`).pipe(      
+      catchError(err => throwError(() => err.error))
     )
   }
 }

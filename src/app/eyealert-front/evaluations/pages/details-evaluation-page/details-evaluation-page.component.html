@@ -1,3 +1,78 @@
-<div class="details_evaluations">
-    <p>details-evaluation-page works!</p>
-</div>
+@if(evaluationDetailsResource.hasValue()){
+    <div class="details_evaluation_container">
+        <div class="details_evaluation">
+            <h2>Detalle de la Evaluación</h2>
+        
+            <div class="details__body">
+                <div class="date_result">
+                    <span>{{ fecha }}</span>
+                    
+                    <span 
+                        class="result"
+                        [class.result--low]="resultadoEvaluacion == 'bajo'"
+                        [class.result--high]="resultadoEvaluacion == 'alto'"
+                    > 
+                        riesgo {{ resultadoEvaluacion }} 
+                    </span>
+                </div>
+        
+                <div class="hour_result_doctor">
+                    <span>{{ hora }}</span>
+
+                    @if (userRol() == "administrador") {
+                        <span 
+                            class="result"
+                            [class.result--pending]="resultadoEspecialista == 'pendiente'"
+                            [class.result--correct]="resultadoEspecialista == 'acertado'"
+                            [class.result--incorrect]="resultadoEspecialista == 'no acertado'"
+                        > 
+                            {{ resultadoEspecialista }} 
+                        </span>
+                    }
+                </div>
+                @if (userRol() == "administrador") {
+                    <span> Tiempo inicio predicción: {{ tiempoPrediccionInicio }} </span>
+                    <span> Tiempo fin predicción: {{ tiempoPrediccionFin }} </span>
+                    <span> Tiempo predicción: {{ tiempoPrediccion }} ms </span>
+                }
+        
+                <div class="divider"></div>
+        
+                @for (pregunta of evaluationDetailsResource.value().data?.listPreguntaRespuesta; track $index) {
+                    @if (pregunta.pregunta.includes('edad')) {
+                        <span> Edad: {{ edad }} </span>
+                    }@else if (pregunta.pregunta.includes('genero')) {
+                        <span> Genero: {{ genero }} </span>
+                    }@else {
+                        <div class="respuesta_usuario">
+                            <span> {{ pregunta.pregunta }} </span>
+                            <span> {{ pregunta.respuesta }} </span>
+                        </div>
+                    }
+                }
+        
+                <div class="divider"></div>
+        
+        
+                @if (userRol() == "administrador" && resultadoEspecialista == "pendiente") {
+                    <div class="doctor_evaluation">
+                        <p>¿El resultado <span> 'riesgo {{ riesgo }}'</span> de la evalaución es correcto?</p>
+            
+                        <div class="doctor_evaluation__buttons">
+                            <button>Sí</button>
+                            <button>No</button>
+                        </div>
+                    </div>
+                }        
+            </div>
+        
+            <a class="button_close" (click)="toBack()">Cerrar</a>
+        
+        </div>
+    </div>
+}
+
+
+@if (evaluationDetailsResource.isLoading()) {
+    <loader/>
+}

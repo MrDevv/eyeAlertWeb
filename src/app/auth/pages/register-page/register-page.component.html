@@ -1,3 +1,66 @@
 <div class="register">
-    <h1>register</h1>
+    <div class="register__logo">
+        <img src="assets/icons/logo-login.svg" alt="logo" />
+        <h1>EyeAlert</h1>
+        <div class="lines">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div class="register__data">
+        <div class="register__data-header">
+        <h2>{{ "Registrarse" | uppercase }}</h2>
+        <p>Por favor completa los datos para continuar.</p>
+        </div>
+
+        <form
+            [formGroup]="registerForm"
+            (ngSubmit)="onSubmit()"
+            class="register__data-form"
+        >
+
+            <div class="name">
+                <input type="text" placeholder="Nombres" formControlName="name">
+            </div>
+
+            <div class="lastName">                
+                <input type="text" placeholder="Apellidos" formControlName="lastName">
+            </div>
+
+            <div class="email">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="Correo electrónico" formControlName="email"/>
+            </div>
+            @if(email?.errors?.['email'] && email?.touched){
+                <p class="email_error">El email no es válido</p>
+            }            
+
+            <div class="password">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" placeholder="Contraseña" formControlName="password" />
+            </div>
+
+            <div class="password">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" placeholder="Confirmar contraseña" formControlName="confirmPassword" />
+            </div>
+
+            <button class="btn-register" type="submit">
+                <i class="fa-solid fa-plus"></i>
+                {{ "registrarse" | uppercase }}
+            </button>
+
+            <span>ó</span>
+
+            <button routerLink="/auth/login" class="btn-login">
+                {{ "Ir a iniciar sesión" | uppercase }}
+            </button>
+        </form>
+
+        <div class="lines">
+            <div></div>
+            <div></div>
+        </div>
+  </div>
 </div>

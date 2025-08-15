@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { catchError, delay, map, Observable, of, tap, throwError } from 'rxjs';
+import { catchError, delay, last, map, Observable, of, tap, throwError } from 'rxjs';
 import { UserDTO } from '../interfaces/UserDTO';
 import { ResponseLoginDTO } from '../interfaces/ResponseLoginDTO';
 import { environment } from '../../../environments/environment';
@@ -97,6 +97,26 @@ export class AuthService {
       contraseña_repetida: passwordRepeated
     }).pipe(      
       catchError((err: HttpErrorResponse) => {
+        return throwError(() => err.error)
+      })
+    )
+  }
+
+  public register(name: string, lastName: string, email: string, password: string, repeatedPassword: string): Observable<ResponseHttp<UserDTO>>{
+    return this.http.post<ResponseHttp<UserDTO>>(`${BASEURL}/auth/create-usuario`, {
+      nombres: name,
+      apellidos: lastName,
+      email,
+      password,
+      password_repetida: repeatedPassword
+    }).pipe(
+      tap((resp) => {
+        const { data } = resp;
+        this.successLogin(data!)
+        console.log(resp)
+      }),
+      catchError((err: HttpErrorResponse) => {
+        this.clearDataUser()
         return throwError(() => err.error)
       })
     )

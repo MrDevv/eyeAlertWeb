@@ -59,7 +59,7 @@
 
 .register__data-form .name,
 .register__data-form .lastName{
-    padding: 0;
+    padding: 0;    
 }
 
 .register__data-form .password,
@@ -109,6 +109,10 @@
     padding: 10px;
     text-align: center;
     width: 100%;
+}
+
+.register__data-form .btn-register i{
+    color: #fff
 }
 
 .register__data-form .btn-login{
@@ -170,4 +174,24 @@
 .register__data .lines div:nth-child(2){
     width: 60px;
     height: 15px;        
+}
+
+@media (max-width: 480px) {
+    .register {
+        width: 100%;
+        height: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: 25rem max-content;
+        border-radius: 0;
+        overflow-y: scroll;
+    }
+
+    .register__logo img{
+        width: 50%;
+    }
+
+    .register__data{
+        padding: 7rem 4rem 4rem;
+        gap: 3.5rem;
+    }
 }

@@ -1,16 +1,17 @@
-import { UpperCasePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { AlertsService } from '../../../shared/services/alerts.service';
-import { LoaderComponent } from '../../../shared/components/loader/loader.component';
+import { UpperCasePipe } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+
+import { LoaderComponent } from '@shared/components/loader/loader.component';
+import { AuthService } from '@auth/services/auth.service';
+import { AlertsService } from '@shared/services/alerts.service';
 
 @Component({
   selector: 'app-login-page',
   imports: [LoaderComponent, UpperCasePipe, RouterLink, ReactiveFormsModule],
   templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.css',
+  styleUrls: [ '../../shared/styles/auth-styles.css', './login-page.component.css']
 })
 export class LoginPageComponent {
   fb = inject(FormBuilder);

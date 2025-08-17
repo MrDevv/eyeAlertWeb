@@ -1,6 +1,6 @@
-<div class="login">
-  <div class="login__logo">
-    <img src="assets/icons/logo-login.svg" alt="logo login" />
+<div class="auth">
+  <div class="auth__logo">
+    <img src="assets/icons/logo-auth.svg" alt="logo auth" />
     <h1>EyeAlert</h1>
     <div class="lines">
       <div></div>
@@ -8,8 +8,8 @@
     </div>
   </div>
 
-  <div class="login__data">
-    <div class="login__data-header">
+  <div class="auth__data">
+    <div class="auth__data-header">
       <h2>{{ "Iniciar Sesión" | uppercase }}</h2>
       <p>Por favor inicia sesión para continuar.</p>
     </div>
@@ -17,7 +17,7 @@
     <form
       [formGroup]="loginForm"
       (ngSubmit)="onSubmit()"
-      class="login__data-form"
+      class="auth__data-form"
     >
       <div class="email">
         <i class="fa-solid fa-envelope"></i>
@@ -51,7 +51,7 @@
     </div>
   </div>
 
-  <a class="login__recover_password">¿Has olvidado tu contraseña?</a>  
+  <a routerLink="/auth/forgot-password" class="login__recover_password">¿Has olvidado tu contraseña?</a>  
 </div>
 
 

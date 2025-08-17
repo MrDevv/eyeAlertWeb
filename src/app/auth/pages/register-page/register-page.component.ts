@@ -10,7 +10,7 @@ import { firstValueFrom } from 'rxjs';
   selector: 'app-register-page',
   imports: [UpperCasePipe, ReactiveFormsModule, RouterLink],
   templateUrl: './register-page.component.html',
-  styleUrl: './register-page.component.css'
+  styleUrls: ['../../shared/styles/auth-styles.css', './register-page.component.css']
 })
 export class RegisterPageComponent {
 

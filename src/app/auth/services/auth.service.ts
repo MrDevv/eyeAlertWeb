@@ -51,14 +51,15 @@ export class AuthService {
   logout() {    
     this.clearDataUser()
     localStorage.removeItem('tokenEyeAlert');
-    this.router.navigateByUrl('/auth/login');
+    this.router.navigateByUrl('auth/login')
   }
 
   checkStatus(): void {    
     const token = localStorage.getItem('tokenEyeAlert');
 
     if (!token) {            
-      this.logout()          
+      this.clearDataUser()
+      localStorage.removeItem('tokenEyeAlert');
       return
     }
         

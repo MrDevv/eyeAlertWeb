@@ -1,119 +1,12 @@
-.login{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    box-shadow: 0px 2px 3px #afafaf;
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;    
-}
 
-.login__logo{
-    background-color: var(--background-color-main);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    position: relative;
-}
 
-.login__logo h1{
-    font-size: 40px;
-}
-
-.login__data{
-    padding: 12rem 10rem;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    position: relative;
-}
-
-.login__data-header h2{
-    font-size: 20px;
-}
-
-.login__data-header p{
-    margin: 10px 0 0;
-}
-
-.login__data-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.login__data-form .email,
-.login__data-form .password{
-    border-bottom: 2px solid var(--background-color-main);
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-    gap: 5px;
-}
-
-.login__data-form .password{
+.auth__data-form .password{
     margin-top: 10px;
 }
 
-.email_error{
-    width: 100%;
-    color: rgb(192, 0, 0);
-    text-align: end;    
-}
-
-.login__data-form i{
-    color: var(--background-color-main);
-    font-size: 20px;
-}
-
-.login__data-form input{
-    border: none;
-    padding: 5px;
-    font-size: 17px;
-    width: 100%;
-}
-
-.login__data-form input::placeholder{
-    color: #2E2E2E;
-    font-weight: 300;
-}
-
-.login__data-form input:focus-visible{
-    outline: none;
-}
-
-.login__data-form .btn-login{
-    cursor: pointer;
-    align-items: center;
-    background-color: #1976DF;
-    border-radius: 5px;
-    color: #fff;
-    display: flex; 
-    font-weight: 700;    
-    gap: 10px;
-    justify-content: center;
-    margin-top: 30px;
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-}
-
-.login__data-form .btn-login i{
+.auth__data-form .btn-login i{
     color: #fff;
     font-size: 14px;
-}
-
-.login__data-form .btn-create-account{
-    cursor: pointer;
-    color: var(--background-color-main);
-    font-weight: 700;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #fff;
-    width: 100%;
-    outline: 2px solid var(--background-color-main);
 }
 
 .login__recover_password{
@@ -123,97 +16,21 @@
     position: absolute;
     font-size: 14px;
     cursor: pointer;
+    color: #000;
 }
 
 .login__recover_password:hover{
     text-decoration: underline;
 }
 
-.lines{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-}
-
-.login__logo .lines{
-    align-items: end;
-    bottom: 0;
-    right: 0;
-}
-
-.login__logo .lines div{
-    background-color: #fff;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 0px;
-}
-
-.login__logo .lines div:first-child{
-    width: 60px;
-    height: 15px;    
-}
-
-.login__logo .lines div:nth-child(2){
-    width: 100px;
-    height: 15px;
-}
-
-.login__logo h1{
-    color: #fff;
-}
-
-.login__data .lines{
-    align-items: start;
-    top: 0;
-    left: 0;
-}
-
-.login__data .lines div{
-    background-color: var(--background-color-main);
-    border-bottom-right-radius: 50px;
-    border-top-right-radius: 0px;
-}
-
-.login__data .lines div:first-child{
-    width: 100px;
-    height: 15px;    
-}
-
-.login__data .lines div:nth-child(2){
-    width: 60px;
-    height: 15px;        
-}
-
 /* reponsive celulares */
-@media (max-width: 480px) {    
-    .login{                        
-        width: 100%;
-        height: 100vh;        
-        grid-template-columns: 1fr;
-        grid-template-rows: 25rem max-content max-content;
-        border-radius: 0;
-        overflow-y: scroll;
-    }
-
-    .login__logo img{
-        width: 50%;
-    }
-
-    .login__data{
-        padding: 7rem 4rem 0;
-        gap: 3.5rem;
-    }
-
-    .login__data-form .email,
-    .login__data-form .password{        
-        width: 100%;
-    }
-
+@media (max-width: 480px) {
     .login__recover_password{
         display: inline;
         position: relative;
         right: 0;
         bottom: 0;
-        margin: 2rem 4rem;        
+        margin: 2rem 4rem;
         text-align: center;
-    }    
+    }
 }

@@ -38,6 +38,7 @@ export class InformativeDataService {
         size
       }
     }).pipe(
+      delay(5000),
       catchError((err: HttpErrorResponse) => {
         console.log(err);
         return throwError(() => err.error)        

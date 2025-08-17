@@ -6,10 +6,11 @@ import { PaginationComponent } from "../../../shared/components/pagination/pagin
 import { ActivatedRoute } from '@angular/router';
 import { DataPageable } from '../../../../shared/interfaces/DataPageable';
 import { InformativeDataDTO } from '../../interfaces/InformativeDataDTO';
+import { LoaderComponent } from "@shared/components/loader/loader.component";
 
 @Component({
   selector: 'informative-data-page',
-  imports: [CardInformativeDataComponent, PaginationComponent],
+  imports: [CardInformativeDataComponent, PaginationComponent, LoaderComponent],
   templateUrl: './informative-data-page.component.html',
   styleUrl: './informative-data-page.component.css'
 })

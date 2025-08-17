@@ -19,3 +19,7 @@
         </div>
     }
 </div>
+
+@if(informativeDataResource.isLoading()){
+    <loader [message]="'Cargando datos informativos...'" />
+}

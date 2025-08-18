@@ -123,6 +123,17 @@ export class AuthService {
     )
   }
 
+  public sendEmailResetPassword(email: string) {
+    return this.http.post(`${BASEURL}/auth/recover-password`, {
+      email
+    }).pipe(
+      tap(resp => console.log(resp)),
+      catchError(err => {
+        return throwError(() => err.error)
+      })
+    )
+  }
+
   successLogin(data: UserDTO){    
       this._user.set(data)
       this._token.set(data!.jwt)

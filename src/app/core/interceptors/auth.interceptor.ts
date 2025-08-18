@@ -12,19 +12,19 @@ export function authInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) 
     const authAlerts = inject(AlertsService)
     
 
-    const token = localStorage.getItem('tokenEyeAlert')    
+    const token = localStorage.getItem('tokenEyeAlert')
   
     const newReq = req.clone({
-        headers: req.headers.append('Authorization', `Bearer ${token}`),
+        headers: req.headers.append('Authorization', token ? `Bearer ${token}` : ''),
     });
     return next(newReq).pipe(
-        catchError((err: HttpErrorResponse) => {                        
+        catchError((err: HttpErrorResponse) => {
             if (err.status == 401) {
-                authService.logout()                
+                authService.logout()
                 router.navigateByUrl('/auth/login')
                 showAlertSessionExpired(authAlerts)
             }
-            if (err.status == 0) {                
+            if (err.status == 0) {
                 showAlertServerUnavailable(authAlerts)
             }
             return throwError(()=> err)

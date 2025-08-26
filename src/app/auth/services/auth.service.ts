@@ -134,6 +134,15 @@ export class AuthService {
     )
   }
 
+  public resetPassword(token:string, password: string){
+    return this.http.patch(`${BASEURL}/auth/reset-password`, {
+      token,
+      new_password: password
+    }).pipe(      
+      catchError(err => throwError(() => err.error))
+    )
+  }
+
   successLogin(data: UserDTO){    
       this._user.set(data)
       this._token.set(data!.jwt)

@@ -33,7 +33,11 @@ export class QuizzService {
   }
 
   public getPreguntas(): any{
-    return this.http.get(`${BASEURL}/preguntas-quizz`).pipe(
+    return this.http.get(`${BASEURL}/preguntas-quizz`,{
+      params: {
+        limit: 10
+      }
+    }).pipe(
       catchError(err => {
         return throwError(() => err)
       })

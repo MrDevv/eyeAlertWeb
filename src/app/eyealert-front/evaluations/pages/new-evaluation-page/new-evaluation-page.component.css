@@ -16,7 +16,10 @@
 }
 
 .new_evaluation__header{    
-    text-align: center;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .new_evaluation__header h2{
@@ -102,7 +105,7 @@
     width: 3rem;
     height: 3rem;
     appearance: none;
-    border-radius: 50px;    
+    border-radius: 50px;
     border: 1px solid var(--background-color-main);
 }
 
@@ -121,10 +124,28 @@
     margin: auto;
 }
 
+.message_model_ia{
+    padding: .2rem .5rem;    
+    color: #80800f;
+    font-weight: 700;
+    border: 1px solid #52520a;
+    border-radius: 5rem;
+    cursor: pointer;   
+}
+
 @media (max-width: 480px) {
     .new_evaluation{
         border-radius: 0;
         padding: 2rem 3rem;
         max-height: max-content;
+    }
+
+    .new_evaluation__header h2{
+        font-size: 2rem;
+        font-weight: 800;
+    }
+
+    .message_model_ia{
+        font-size: 1.4rem;
     }
 }

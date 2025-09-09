@@ -12,8 +12,6 @@ import { ModalRiskLevelComponent } from '@evaluations/components/modals/modal-ri
 import { DetalleEvaluacion, SaveEvaluation } from '@evaluations/interfaces/SaveEvaluation';
 import { AuthService } from '@auth/services/auth.service';
 import { EvaluationResultDTO } from '@evaluations/interfaces/EvaluationResultDTO';
-import { ResponseErrorHttpDTO } from '@shared/interfaces/ResponseErrorHttpDTO';
-import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -176,5 +174,9 @@ export class NewEvaluationPageComponent {
       }
       control.setValue(updateValue)
     }
+  }
+
+  showAlert(){
+    this.alertsService.warning("Sobre las evaluaciones", "Los resultados que obtienes aquí son una estimación basada en factores de riesgo y en un modelo de inteligencia artificial con una precisión aproximada del 76%. Esto significa que puede haber errores y que no sustituye una consulta médica. Te recomendamos siempre acudir a un especialista en oftalmología para confirmar tu estado de salud visual.")
   }
 }

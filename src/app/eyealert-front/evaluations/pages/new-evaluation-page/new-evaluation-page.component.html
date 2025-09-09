@@ -1,8 +1,9 @@
 <div class="parent">
     @if(questionsResource.hasValue()){
         <div class="new_evaluation">
-            <div class="new_evaluation__header">
-                <h2>Nueva evaluación</h2>
+            <div class="new_evaluation__header">                
+                    <h2>Nueva evaluación</h2>
+                    <p (click)="showAlert()" class="message_model_ia">Importante <i class="fa-solid fa-triangle-exclamation"></i></p>                
             </div>
             <div class="new_evaluation__body">
                 <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
@@ -54,7 +55,7 @@
                     <button class="body__button_evaluation"> Realizar evaluación </button>
                 </form>
             </div>
-        </div>
+        </div>        
     }    
 </div>
 

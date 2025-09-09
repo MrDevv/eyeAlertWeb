@@ -104,6 +104,7 @@ export class AuthService {
   }
 
   public register(name: string, lastName: string, email: string, password: string, repeatedPassword: string): Observable<ResponseHttp<UserDTO>>{
+    this._authStatus.set('checking');
     return this.http.post<ResponseHttp<UserDTO>>(`${BASEURL}/auth/create-usuario`, {
       nombres: name,
       apellidos: lastName,

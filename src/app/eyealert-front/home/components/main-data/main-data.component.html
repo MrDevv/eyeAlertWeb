@@ -24,7 +24,7 @@
           @for (evaluation of lastestEvaluations().value()?.data?.evaluaciones; track $index) {          
             <card-evaluation [evaluation]="evaluation"/>          
           }
-        }
+        }        
       }@else {
           <div class="loader_skeleton__card_evaluation">            
           </div>
@@ -35,14 +35,16 @@
           <div class="loader_skeleton__card_evaluation">            
           </div>
       }
-    </div>    
-    <a 
-      routerLink="/evaluations/new-evaluation"
-      class="new-evaluations-button"
-    >
-      <i class="fa-solid fa-plus-minus"></i>
-      {{'nueva evaluación' | uppercase }}
-    </a>    
+    </div>
+    @if (lastestEvaluations().hasValue()) {
+        <a
+          routerLink="/evaluations/new-evaluation"
+          class="new-evaluations-button"
+        >
+          <i class="fa-solid fa-plus-minus"></i>
+            {{'nueva evaluación' | uppercase }}
+        </a>
+      }
   </div>
 
   <div class="home__main_data-informative-data">

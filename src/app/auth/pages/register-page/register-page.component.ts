@@ -5,17 +5,18 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { AlertsService } from '@shared/services/alerts.service';
 import { firstValueFrom } from 'rxjs';
+import { LoaderComponent } from "@shared/components/loader/loader.component";
 
 @Component({
   selector: 'app-register-page',
-  imports: [UpperCasePipe, ReactiveFormsModule, RouterLink],
+  imports: [UpperCasePipe, ReactiveFormsModule, RouterLink, LoaderComponent],
   templateUrl: './register-page.component.html',
   styleUrls: ['../../shared/styles/auth-styles.css', './register-page.component.css']
 })
 export class RegisterPageComponent {
 
   private fb = inject(FormBuilder)
-  private authService = inject(AuthService)
+  public authService = inject(AuthService)
   private alertService = inject(AlertsService)
   private router = inject(Router)
 

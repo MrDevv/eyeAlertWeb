@@ -51,8 +51,7 @@ export class EditProfileComponent {
     this.formUserData.get('email')?.setValue(this.authService.user()?.email!)
   }
 
-  async onSubmitDataUser(){
-    this.isLoading.set(true)
+  async onSubmitDataUser(){    
     const {nombres, apellidos, email} = this.formUserData.value
     
     
@@ -65,6 +64,8 @@ export class EditProfileComponent {
       this.showAlertEmailInvalido()
       return
     }        
+
+    this.isLoading.set(true)
 
     try{
       const resp = await firstValueFrom(this.authService.updateUsuario(nombres.trim(), apellidos.trim(), email.trim(), this.authService.user()?.id!))
@@ -97,6 +98,8 @@ export class EditProfileComponent {
       return
     }
 
+    this.isLoading.set(true)
+
     try {
       const resp = await firstValueFrom(this.authService.updatePassword(currentPassword, newPassword, passwordRepeated, this.authService.user()?.id!))
 
@@ -112,6 +115,8 @@ export class EditProfileComponent {
         this.showAlertCurrentPasswordInvalid(error.message)        
       }      
     }
+
+    this.isLoading.set(false)
     
   }
 
